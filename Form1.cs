@@ -1,10 +1,8 @@
 using System;
-using System.Diagnostics;   
+using System.Diagnostics;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Drawing;
-using System.Drawing.Design;
 using System.IO;
 
 namespace DiscordMultiTool
@@ -14,66 +12,75 @@ namespace DiscordMultiTool
         public Form1()
         {
             InitializeComponent();
+            this.FormClosing += Form1_FormClosing; // salva tutto alla chiusura
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.checkbox == "True")
-            {
-                checkBox1.Checked = true;
-            }
-            else
-            {
-                checkBox1.Checked = false;
-            }
-            this.BackColor = SystemColors.Control;
-            tabControl1.BackColor = SystemColors.Control;
-            tabPage1.BackColor = Color.White;
-            button1.BackColor = SystemColors.Control;
-            button2.BackColor = SystemColors.Control;
-            button3.BackColor = SystemColors.Control;
-            button4.BackColor = SystemColors.Control;
-            button5.BackColor = SystemColors.Control;
-            button6.BackColor = SystemColors.Control;
-            button7.BackColor = SystemColors.Control;
-            button8.BackColor = SystemColors.Control;
-            button9.BackColor = SystemColors.Control;
-            button10.BackColor = SystemColors.Control;
-            label1.BackColor = SystemColors.Control;
-            label2.BackColor = SystemColors.Control;
-            button10.Text = "Change Theme: Modern";
-            // Ottieni informazioni sul processo corrente DEBUG
-            Process processo = Process.GetCurrentProcess();
-            string nomeProcesso = processo.ProcessName;
-            label1.Text = $"Discord Multi Tool V1.0.0\nThis Process: {nomeProcesso}\nDiscordMultiTool/MASTER\nTranslated by itelcan3\nhttps://github.com/CodeSharp3210";
-            string cartella = @"C:\Users\" + Environment.UserName + @"\DiscordMultiTool";
+            checkBox1.Checked = (Properties.Settings.Default.checkbox == "True");
 
             if (checkBox1.Checked)
             {
-                Properties.Settings.Default.checkbox = "True";
+                // Textbox
                 textBox1.Text = Properties.Settings.Default.textbox1;
                 textBox2.Text = Properties.Settings.Default.textbox2;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
 
+                // Tema
+                if (Properties.Settings.Default.tema == "Modern")
+                {
+                    button10.Text = "Change Theme: Classic";
+                    this.BackColor = SystemColors.Control;
+                    tabControl1.BackColor = SystemColors.Control;
+                    tabPage1.BackColor = Color.White;
+                    button1.BackColor = SystemColors.Control;
+                    button2.BackColor = SystemColors.Control;
+                    button3.BackColor = SystemColors.Control;
+                    button4.BackColor = SystemColors.Control;
+                    button5.BackColor = SystemColors.Control;
+                    button6.BackColor = SystemColors.Control;
+                    button7.BackColor = SystemColors.Control;
+                    button8.BackColor = SystemColors.Control;
+                    button9.BackColor = SystemColors.Control;
+                    button10.BackColor = SystemColors.Control;
+                    label1.BackColor = SystemColors.Control;
+                    label2.BackColor = SystemColors.Control;
+                    button11.BackColor = SystemColors.Control;
+                }
+                else if (Properties.Settings.Default.tema == "Classic")
+                {
+                    button10.Text = "Change Theme: Modern";
+                    this.BackColor = Color.FromArgb(54, 57, 63);
+                    tabControl1.BackColor = Color.FromArgb(47, 49, 54);
+                    tabPage1.BackColor = Color.FromArgb(47, 49, 54);
+                    button1.BackColor = Color.FromArgb(54, 57, 63);
+                    button2.BackColor = Color.FromArgb(54, 57, 63);
+                    button3.BackColor = Color.FromArgb(54, 57, 63);
+                    button4.BackColor = Color.FromArgb(54, 57, 63);
+                    button5.BackColor = Color.FromArgb(54, 57, 63);
+                    button6.BackColor = Color.FromArgb(54, 57, 63);
+                    button7.BackColor = Color.FromArgb(54, 57, 63);
+                    button8.BackColor = Color.FromArgb(54, 57, 63);
+                    button9.BackColor = Color.FromArgb(54, 57, 63);
+                    button10.BackColor = Color.FromArgb(54, 57, 63);
+                    label1.BackColor = Color.FromArgb(54, 57, 63);
+                    label2.BackColor = Color.FromArgb(54, 57, 63);
+                    button11.BackColor = Color.FromArgb(54, 57, 63);
+                }
             }
+            // Info processo
+            Process processo = Process.GetCurrentProcess();
+            string nomeProcesso = processo.ProcessName;
+            label1.Text = $"Discord Multi Tool V1.0.0\nThis Process: {nomeProcesso}\nDiscordMultiTool/MASTER\nTranslated by itelcan3\nhttps://github.com/CodeSharp3210";
 
-            // Controlla se la cartella esiste, altrimenti la crea e ci mette dentro i file necessari
-            Properties.Settings.Default.textbox1 = textBox1.Text;
-            Properties.Settings.Default.textbox2 = textBox2.Text;
-            Properties.Settings.Default.Save();
+            // Cartella log
+            string cartella = @"C:\Users\" + Environment.UserName + @"\DiscordMultiTool";
             string contenutoLog = $"DiscordMultiTool injected.\n{textBox1.Text}\n{textBox2.Text}";
+
             if (Directory.Exists(cartella))
             {
                 if (!File.Exists(cartella + @"\log.txt"))
                 {
                     File.WriteAllText(cartella + @"\log.txt", contenutoLog);
-                }
-                else
-                {
-                    ;
                 }
             }
             else
@@ -82,6 +89,20 @@ namespace DiscordMultiTool
             }
         }
 
+        // Salvataggio dati quando chiudi l'app
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.checkbox = checkBox1.Checked ? "True" : "False";
+            Properties.Settings.Default.textbox1 = textBox1.Text;
+            Properties.Settings.Default.textbox2 = textBox2.Text;
+
+            if (button10.Text == "Change Theme: Classic")
+                Properties.Settings.Default.tema = "Modern";
+            else
+                Properties.Settings.Default.tema = "Classic";
+
+            Properties.Settings.Default.Save();
+        }
 
         // GUI & impostazioni programma
         private void Button9_Click(object sender, EventArgs e)
@@ -102,12 +123,14 @@ namespace DiscordMultiTool
                 button8.ForeColor = COLORGUI.Color;
                 tabControl1.ForeColor = COLORGUI.Color;
                 tabPage1.ForeColor = COLORGUI.Color;
+                button11.ForeColor = COLORGUI.Color;
             }
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-
+            Form2 form2 = new Form2();
+            form2.Show();
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -133,15 +156,13 @@ namespace DiscordMultiTool
         {
             Process processo = Process.GetCurrentProcess();
             processo.Kill();
-
         }
 
         private void Button10_Click(object sender, EventArgs e)
         {
-
-            if (button10.Text == "Change Theme: Modern")
+            if (button10.Text == "Change Theme: Classic")
             {
-                button10.Text = "Change Theme: Classic";
+                button10.Text = "Change Theme: Modern";
                 this.BackColor = Color.FromArgb(54, 57, 63);
                 tabControl1.BackColor = Color.FromArgb(47, 49, 54);
                 tabPage1.BackColor = Color.FromArgb(47, 49, 54);
@@ -157,10 +178,13 @@ namespace DiscordMultiTool
                 button10.BackColor = Color.FromArgb(54, 57, 63);
                 label1.BackColor = Color.FromArgb(54, 57, 63);
                 label2.BackColor = Color.FromArgb(54, 57, 63);
+                button11.BackColor = Color.FromArgb(54, 57, 63);
+                Properties.Settings.Default.tema = "Modern";
+                Properties.Settings.Default.Save();
             }
-            else
+            else if (button10.Text == "Change Theme: Modern")
             {
-                button10.Text = "Change Theme: Modern";
+                button10.Text = "Change Theme: Classic";
                 this.BackColor = SystemColors.Control;
                 tabControl1.BackColor = SystemColors.Control;
                 tabPage1.BackColor = Color.White;
@@ -176,6 +200,9 @@ namespace DiscordMultiTool
                 button10.BackColor = SystemColors.Control;
                 label1.BackColor = SystemColors.Control;
                 label2.BackColor = SystemColors.Control;
+                button11.BackColor = SystemColors.Control;
+                Properties.Settings.Default.tema = "Classic";
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -187,14 +214,14 @@ namespace DiscordMultiTool
         private void Button5_Click(object sender, EventArgs e)
         {
             Process[] ProcessoDiscord = Process.GetProcessesByName("Discord");
-            if (ProcessoDiscord.Length == 0)
+            if (ProcessoDiscord.Length > 0)
             {
                 string discordID = ProcessoDiscord[0].Id.ToString();
-                MessageBox.Show($"Discord Multi Tool is already connected with your Discord Client\nProcess Name: {ProcessoDiscord}\nProcess PID: {discordID}");
+                MessageBox.Show($"Discord Multi Tool is already connected with your Discord Client\nProcess Name: {ProcessoDiscord[0].ProcessName}\nProcess PID: {discordID}");
             }
             else
             {
-                ;
+                MessageBox.Show("No running Discord process was found.");
             }
         }
 
@@ -219,6 +246,14 @@ namespace DiscordMultiTool
             }
             Thread.Sleep(2000);
             Process.Start("explorer.exe");
+        }
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.checkbox = checkBox1.Checked ? "True" : "False";
+            Properties.Settings.Default.textbox1 = textBox1.Text;
+            Properties.Settings.Default.textbox2 = textBox2.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -39,6 +39,8 @@
             button8 = new Button();
             label1 = new Label();
             tabPage1 = new TabPage();
+            checkBox1 = new CheckBox();
+            label5 = new Label();
             textBox2 = new TextBox();
             label4 = new Label();
             label3 = new Label();
@@ -48,8 +50,6 @@
             button9 = new Button();
             tabControl1 = new TabControl();
             label2 = new Label();
-            label5 = new Label();
-            checkBox1 = new CheckBox();
             tabPage1.SuspendLayout();
             tabControl1.SuspendLayout();
             SuspendLayout();
@@ -151,7 +151,7 @@
             label1.Name = "label1";
             label1.Size = new Size(292, 109);
             label1.TabIndex = 8;
-            label1.Text = "DiscordMultiTool V1.0.0\r\n";
+            label1.Text = "DiscordMultiTool V1.1.0\n";
             // 
             // tabPage1
             // 
@@ -171,6 +171,27 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Settings";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(434, 233);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(124, 19);
+            checkBox1.TabIndex = 8;
+            checkBox1.Text = "Auto Save Settings";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += CheckBox1_CheckedChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(305, 231);
+            label5.Name = "label5";
+            label5.Size = new Size(103, 21);
+            label5.TabIndex = 7;
+            label5.Text = "Save Settings";
             // 
             // textBox2
             // 
@@ -224,7 +245,7 @@
             button10.Name = "button10";
             button10.Size = new Size(232, 33);
             button10.TabIndex = 1;
-            button10.Text = "Change Theme";
+            button10.Text = "Change Theme: Classic";
             button10.UseVisualStyleBackColor = true;
             button10.Click += Button10_Click;
             // 
@@ -257,26 +278,6 @@
             label2.Size = new Size(628, 25);
             label2.TabIndex = 10;
             label2.Text = "DiscordMultiTool by MasterSharp and itelcan3 for MasterSharp Team LLC.";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(305, 231);
-            label5.Name = "label5";
-            label5.Size = new Size(103, 21);
-            label5.TabIndex = 7;
-            label5.Text = "Save Settings";
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(434, 233);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(124, 19);
-            checkBox1.TabIndex = 8;
-            checkBox1.Text = "Auto Save Settings";
-            checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

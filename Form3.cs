@@ -287,6 +287,7 @@ namespace DiscordMultiTool
                     {
                         lock (logWriter)
                         {
+
                         }
                     }
                 };
