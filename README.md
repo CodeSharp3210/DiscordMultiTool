@@ -38,7 +38,7 @@ Grazie del supporto per questo programma! Se desiderate una nuova versione o ave
 ## 👥 Crediti dei membri Master Sharp Team LLC.
 
 - **Franciplay58** - Sviluppatore principale della GUI e dell'integrazione funzioni/UI
-- **MasterSharp** - Co-sviluppatore, traduttore e sviluppatore delle funzioni 
+- **MasterSharp** - Developer secondario, traduttore e sviluppatore delle funzioni 
 - **itelcan3** - Traduzione aggiuntiva
 
 ---
