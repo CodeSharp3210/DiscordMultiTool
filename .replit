@@ -1,6 +1,29 @@
-modules = ["dotnet-7.0"]
+modules = ["dotnet-7.0", "dotnet-8.0"]
 [agent]
 expertMode = true
 
 [nix]
 channel = "stable-25_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Info"
+
+[[workflows.workflow]]
+name = "Info"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cat README_REPLIT.md"
+
+[workflows.workflow.metadata]
+outputType = "console"
