@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <SignAssembly>False</SignAssembly>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <Company>MasterSharp Team LLC.</Company>
+    <Copyright>MasterSharp OpenSource Team</Copyright>
+    <PackageProjectUrl>https://github.com/CodeSharp3210/DiscordMultiTool</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CodeSharp3210/DiscordMultiTool</RepositoryUrl>
+    <Title>DiscordMultiTool</Title>
+    <Version>1.0.1</Version>
+    <Authors>MasterSharp Team LLC.</Authors>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DiscordRichPresence" Version="1.6.1.70" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
