@@ -15,7 +15,10 @@ namespace DiscordMultiTool
         private string currentLanguage = "English";
         private Dictionary<string, Dictionary<string, string>> translations;
         private Timer fadeTimer;
+        private Timer highlightTimer;
         private Panel currentPanel;
+        private int highlightTargetY = 496;
+        private bool isModernTheme = false;
         
         private static DiscordRPC.DiscordRpcClient rpcClient;
         private CancellationTokenSource _cts;
@@ -164,11 +167,13 @@ namespace DiscordMultiTool
 
                 if (Properties.Settings.Default.tema == "Modern")
                 {
+                    isModernTheme = true;
                     button10.Text = translations[currentLanguage]["button10"] + ": Classic";
                     ApplyModernTheme();
                 }
                 else if (Properties.Settings.Default.tema == "Classic")
                 {
+                    isModernTheme = false;
                     button10.Text = translations[currentLanguage]["button10"] + ": Modern";
                     ApplyClassicTheme();
                 }
@@ -225,17 +230,44 @@ namespace DiscordMultiTool
 
         private void ApplyModernTheme()
         {
+            isModernTheme = true;
             this.BackColor = SystemColors.Control;
-            leftPanel.BackColor = Color.FromArgb(32, 34, 37);
-            contentPanel.BackColor = SystemColors.Control;
-            settingsPanel.BackColor = SystemColors.Control;
-            richPresencePanel.BackColor = SystemColors.Control;
-            botPanel.BackColor = SystemColors.Control;
-            dllPanel.BackColor = SystemColors.Control;
+            leftPanel.BackColor = Color.FromArgb(240, 240, 240);
+            contentPanel.BackColor = Color.White;
+            settingsPanel.BackColor = Color.White;
+            richPresencePanel.BackColor = Color.White;
+            botPanel.BackColor = Color.White;
+            dllPanel.BackColor = Color.White;
+            
+            Color textColor = Color.Black;
+            button1.ForeColor = textColor;
+            button2.ForeColor = textColor;
+            button3.ForeColor = textColor;
+            button4.ForeColor = textColor;
+            button5.ForeColor = textColor;
+            button8.ForeColor = textColor;
+            btnSettings.ForeColor = textColor;
+            label1.ForeColor = Color.Gray;
+            label3.ForeColor = textColor;
+            label4.ForeColor = textColor;
+            label5.ForeColor = textColor;
+            lblLanguage.ForeColor = textColor;
+            checkBox1.ForeColor = textColor;
+            button9.ForeColor = textColor;
+            button10.ForeColor = textColor;
+            button11.ForeColor = textColor;
+            rpcLabel1.ForeColor = Color.Gray;
+            rpcLabel2.ForeColor = Color.Gray;
+            rpcLabel3.ForeColor = Color.Gray;
+            rpcLabel4.ForeColor = Color.Gray;
+            rpcLabel5.ForeColor = Color.Gray;
+            botLabel1.ForeColor = textColor;
+            dllLabel1.ForeColor = textColor;
         }
 
         private void ApplyClassicTheme()
         {
+            isModernTheme = false;
             this.BackColor = Color.FromArgb(54, 57, 63);
             leftPanel.BackColor = Color.FromArgb(32, 34, 37);
             contentPanel.BackColor = Color.FromArgb(47, 49, 54);
@@ -243,6 +275,31 @@ namespace DiscordMultiTool
             richPresencePanel.BackColor = Color.FromArgb(47, 49, 54);
             botPanel.BackColor = Color.FromArgb(47, 49, 54);
             dllPanel.BackColor = Color.FromArgb(47, 49, 54);
+            
+            Color textColor = Color.White;
+            button1.ForeColor = textColor;
+            button2.ForeColor = textColor;
+            button3.ForeColor = textColor;
+            button4.ForeColor = textColor;
+            button5.ForeColor = textColor;
+            button8.ForeColor = textColor;
+            btnSettings.ForeColor = textColor;
+            label1.ForeColor = Color.FromArgb(142, 146, 151);
+            label3.ForeColor = textColor;
+            label4.ForeColor = textColor;
+            label5.ForeColor = textColor;
+            lblLanguage.ForeColor = textColor;
+            checkBox1.ForeColor = textColor;
+            button9.ForeColor = textColor;
+            button10.ForeColor = textColor;
+            button11.ForeColor = textColor;
+            rpcLabel1.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel2.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel3.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel4.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel5.ForeColor = Color.FromArgb(142, 146, 151);
+            botLabel1.ForeColor = textColor;
+            dllLabel1.ForeColor = textColor;
         }
 
         private async void SwitchPanel(Panel newPanel)
@@ -303,36 +360,38 @@ namespace DiscordMultiTool
             return tcs.Task;
         }
 
-        private void Button_MouseEnter(object sender, EventArgs e)
+        private void AnimateHighlight(int targetY)
         {
-            if (sender is Button btn)
+            highlightTargetY = targetY;
+            
+            if (highlightTimer != null)
             {
-                btn.BackColor = Color.FromArgb(47, 49, 54);
+                highlightTimer.Stop();
+                highlightTimer.Dispose();
             }
-        }
-
-        private void Button_MouseLeave(object sender, EventArgs e)
-        {
-            if (sender is Button btn)
+            
+            highlightTimer = new Timer();
+            highlightTimer.Interval = 10;
+            
+            highlightTimer.Tick += (s, e) =>
             {
-                btn.BackColor = Color.FromArgb(32, 34, 37);
-            }
-        }
-
-        private void DangerButton_MouseEnter(object sender, EventArgs e)
-        {
-            if (sender is Button btn)
-            {
-                btn.BackColor = Color.FromArgb(64, 25, 25);
-            }
-        }
-
-        private void DangerButton_MouseLeave(object sender, EventArgs e)
-        {
-            if (sender is Button btn)
-            {
-                btn.BackColor = Color.FromArgb(32, 34, 37);
-            }
+                int currentY = highlightPanel.Location.Y;
+                int distance = highlightTargetY - currentY;
+                
+                if (Math.Abs(distance) < 2)
+                {
+                    highlightPanel.Location = new Point(8, highlightTargetY);
+                    highlightTimer.Stop();
+                    highlightTimer.Dispose();
+                }
+                else
+                {
+                    int newY = currentY + distance / 5;
+                    highlightPanel.Location = new Point(8, newY);
+                }
+            };
+            
+            highlightTimer.Start();
         }
 
         private void Button9_Click(object sender, EventArgs e)
@@ -447,21 +506,25 @@ namespace DiscordMultiTool
         private void BtnSettings_Click(object sender, EventArgs e)
         {
             SwitchPanel(settingsPanel);
+            AnimateHighlight(496);
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             SwitchPanel(richPresencePanel);
+            AnimateHighlight(20);
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             SwitchPanel(botPanel);
+            AnimateHighlight(76);
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
             SwitchPanel(dllPanel);
+            AnimateHighlight(132);
         }
 
         private async void RpcButton1_Click(object sender, EventArgs e)

@@ -20,6 +20,7 @@ namespace DiscordMultiTool
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.highlightPanel = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -78,6 +79,7 @@ namespace DiscordMultiTool
             
             // leftPanel
             this.leftPanel.BackColor = System.Drawing.Color.FromArgb(32, 34, 37);
+            this.leftPanel.Controls.Add(this.highlightPanel);
             this.leftPanel.Controls.Add(this.button1);
             this.leftPanel.Controls.Add(this.button2);
             this.leftPanel.Controls.Add(this.button4);
@@ -94,10 +96,16 @@ namespace DiscordMultiTool
             this.leftPanel.Size = new System.Drawing.Size(280, 720);
             this.leftPanel.TabIndex = 0;
             
+            // highlightPanel
+            this.highlightPanel.BackColor = System.Drawing.Color.FromArgb(114, 137, 218);
+            this.highlightPanel.Location = new System.Drawing.Point(8, 496);
+            this.highlightPanel.Name = "highlightPanel";
+            this.highlightPanel.Size = new System.Drawing.Size(4, 50);
+            this.highlightPanel.TabIndex = 100;
+            
             // button1
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(47, 49, 54);
             this.button1.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(12, 20);
@@ -109,13 +117,11 @@ namespace DiscordMultiTool
             this.button1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            this.button1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // button2
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(47, 49, 54);
             this.button2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(12, 76);
@@ -127,13 +133,11 @@ namespace DiscordMultiTool
             this.button2.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
-            this.button2.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.button2.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            this.button2.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // button4
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(47, 49, 54);
             this.button4.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(12, 132);
@@ -145,13 +149,11 @@ namespace DiscordMultiTool
             this.button4.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
-            this.button4.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.button4.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            this.button4.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // button5
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(47, 49, 54);
             this.button5.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(12, 188);
@@ -163,13 +165,11 @@ namespace DiscordMultiTool
             this.button5.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
-            this.button5.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.button5.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            this.button5.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // button3
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(47, 49, 54);
             this.button3.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(12, 244);
@@ -181,13 +181,11 @@ namespace DiscordMultiTool
             this.button3.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
-            this.button3.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.button3.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            this.button3.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // button8
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(47, 49, 54);
             this.button8.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.button8.ForeColor = System.Drawing.Color.White;
             this.button8.Location = new System.Drawing.Point(12, 300);
@@ -199,13 +197,11 @@ namespace DiscordMultiTool
             this.button8.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.Button8_Click);
-            this.button8.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.button8.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            this.button8.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // button7
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(64, 25, 25);
             this.button7.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.button7.ForeColor = System.Drawing.Color.FromArgb(240, 71, 71);
             this.button7.Location = new System.Drawing.Point(12, 370);
@@ -217,13 +213,11 @@ namespace DiscordMultiTool
             this.button7.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
-            this.button7.MouseEnter += new System.EventHandler(this.DangerButton_MouseEnter);
-            this.button7.MouseLeave += new System.EventHandler(this.DangerButton_MouseLeave);
+            this.button7.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // button6
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(64, 25, 25);
             this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.button6.ForeColor = System.Drawing.Color.FromArgb(240, 71, 71);
             this.button6.Location = new System.Drawing.Point(12, 426);
@@ -235,13 +229,11 @@ namespace DiscordMultiTool
             this.button6.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.Button6_Click);
-            this.button6.MouseEnter += new System.EventHandler(this.DangerButton_MouseEnter);
-            this.button6.MouseLeave += new System.EventHandler(this.DangerButton_MouseLeave);
+            this.button6.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // btnSettings
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(47, 49, 54);
             this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnSettings.ForeColor = System.Drawing.Color.White;
             this.btnSettings.Location = new System.Drawing.Point(12, 496);
@@ -253,8 +245,7 @@ namespace DiscordMultiTool
             this.btnSettings.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
-            this.btnSettings.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.btnSettings.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            this.btnSettings.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
             
             // label1
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -302,9 +293,9 @@ namespace DiscordMultiTool
             this.languageComboBox.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.languageComboBox.FormattingEnabled = true;
             this.languageComboBox.Items.AddRange(new object[] { "English", "Italiano" });
-            this.languageComboBox.Location = new System.Drawing.Point(560, 300);
+            this.languageComboBox.Location = new System.Drawing.Point(180, 360);
             this.languageComboBox.Name = "languageComboBox";
-            this.languageComboBox.Size = new System.Drawing.Size(300, 28);
+            this.languageComboBox.Size = new System.Drawing.Size(200, 28);
             this.languageComboBox.TabIndex = 10;
             this.languageComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageComboBox_SelectedIndexChanged);
             
@@ -312,7 +303,7 @@ namespace DiscordMultiTool
             this.lblLanguage.AutoSize = true;
             this.lblLanguage.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblLanguage.ForeColor = System.Drawing.Color.White;
-            this.lblLanguage.Location = new System.Drawing.Point(420, 303);
+            this.lblLanguage.Location = new System.Drawing.Point(50, 363);
             this.lblLanguage.Name = "lblLanguage";
             this.lblLanguage.Size = new System.Drawing.Size(80, 21);
             this.lblLanguage.TabIndex = 9;
@@ -386,6 +377,7 @@ namespace DiscordMultiTool
             this.button11.Text = "Apply Discord Patch";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.Button11_Click);
+            this.button11.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 280, 45, 10, 10));
             
             // button10
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -399,6 +391,7 @@ namespace DiscordMultiTool
             this.button10.Text = "Change Theme";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.Button10_Click);
+            this.button10.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 280, 45, 10, 10));
             
             // button9
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -412,6 +405,7 @@ namespace DiscordMultiTool
             this.button9.Text = "Customize Colors";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.Button9_Click);
+            this.button9.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 280, 45, 10, 10));
             
             // richPresencePanel
             this.richPresencePanel.BackColor = System.Drawing.Color.FromArgb(47, 49, 54);
@@ -496,6 +490,7 @@ namespace DiscordMultiTool
             this.rpcButton1.Text = "Load Discord RPC";
             this.rpcButton1.UseVisualStyleBackColor = false;
             this.rpcButton1.Click += new System.EventHandler(this.RpcButton1_Click);
+            this.rpcButton1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 360, 55, 15, 15));
             
             // rpcTextBox1
             this.rpcTextBox1.Font = new System.Drawing.Font("Segoe UI", 11F);
@@ -583,6 +578,7 @@ namespace DiscordMultiTool
             this.botButton1.Text = "Select Bot File";
             this.botButton1.UseVisualStyleBackColor = false;
             this.botButton1.Click += new System.EventHandler(this.BotButton1_Click);
+            this.botButton1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 360, 55, 15, 15));
             
             // dllPanel
             this.dllPanel.BackColor = System.Drawing.Color.FromArgb(47, 49, 54);
@@ -617,6 +613,7 @@ namespace DiscordMultiTool
             this.dllButton1.Text = "Select DLL File";
             this.dllButton1.UseVisualStyleBackColor = false;
             this.dllButton1.Click += new System.EventHandler(this.DllButton1_Click);
+            this.dllButton1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 360, 55, 15, 15));
             
             // Form1
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -645,7 +642,11 @@ namespace DiscordMultiTool
 
         #endregion
 
+        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern System.IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
         private System.Windows.Forms.Panel leftPanel;
+        private System.Windows.Forms.Panel highlightPanel;
         private System.Windows.Forms.Panel contentPanel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
