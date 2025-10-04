@@ -35,10 +35,10 @@ Sono già in sviluppo aggiornamenti per questo software, tra cui:
 
 Grazie del supporto per questo programma! Se desiderate una nuova versione o avete suggerimenti, vi raccomando di entrare nel mio Server Discord pinnato nel mio profilo GitHub. Nuove versioni usciranno regolarmente!
 
-## 👥 Crediti
+## 👥 Crediti dei membri Master Sharp Team LLC.
 
-- **Franciplay58** - Sviluppatore principale**Franciplay58**
-- **MasterSharp Team LLC** - Co-sviluppatore e traduttore
+- **Franciplay58** - Sviluppatore principale della GUI e dell'integrazione funzioni e UI **Franciplay58**
+- **MasterSharp** - Co-sviluppatore, traduttore e sviluppatore delle funzioni 
 - **itelcan3** - Traduzione aggiuntiva
 
 ---
