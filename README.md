@@ -37,8 +37,8 @@ Grazie del supporto per questo programma! Se desiderate una nuova versione o ave
 
 ## 👥 Crediti
 
-- **MasterSharp Team LLC** - Sviluppatore principale
-- **Franciplay58** - Co-sviluppatore e traduttore
+- **Franciplay58** - Sviluppatore principale**Franciplay58**
+- **MasterSharp Team LLC** - Co-sviluppatore e traduttore
 - **itelcan3** - Traduzione aggiuntiva
 
 ---
