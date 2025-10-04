@@ -38,9 +38,11 @@ Completely redesigned the application with a modern, single-window interface:
 
 ### Animations & Interactions
 - **Smooth Transitions**: Fade in/out effects when switching panels
-- **Hover Effects**: Interactive button highlighting on mouse over
+- **Animated Highlight**: Blue highlight panel that smoothly slides to selected sidebar button
+- **Rounded Buttons**: All buttons feature 10-15px border radius for modern appearance
 - **Color-Coded Actions**: Danger actions (red) for destructive operations
 - **Visual Feedback**: Clear visual states for all interactive elements
+- **Theme-Aware Colors**: Text automatically changes to black for Modern/light theme, white for Classic/dark theme
 
 ### Removed Elements
 - Removed ugly "Settings" overlay label that cluttered the header
