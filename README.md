@@ -14,7 +14,7 @@ DiscordMultiTool è un tool multi-funzione che permette di:
 - **🔌 Applicare patch Discord** per funzionalità aggiuntive
 - **⚙️ Gestire processi Discord** chiusura, restart, monitoraggio e DEBUG dei sottoprocessi
 - **🌐 Supporto multilingua**
-Italiano e Inglese
+ Italiano e Inglese
 - **💾 Salvataggio automatico** delle impostazioni
 
 L'applicazione offre un'interfaccia grafica intuitiva con diversi moduli specializzati per ogni funzionalità.
