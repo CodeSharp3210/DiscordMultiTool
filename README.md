@@ -12,8 +12,9 @@ DiscordMultiTool è un tool multi-funzione che permette di:
 - **🎮 Configurare Discord Rich Presence** personalizzata con immagini e stati custom
 - **🎨 Personalizzare l'interfaccia** con temi scuri/chiari e colori personalizzati
 - **🔌 Applicare patch Discord** per funzionalità aggiuntive
-- **⚙️ Gestire processi Discord** (chiusura, restart, monitoraggio e DEBUG dei sottoprocessi)
-- **🌐 Supporto multilingua** (Italiano e Inglese)
+- **⚙️ Gestire processi Discord** chiusura, restart, monitoraggio e DEBUG dei sottoprocessi
+- **🌐 Supporto multilingua**
+Italiano e Inglese
 - **💾 Salvataggio automatico** delle impostazioni
 
 L'applicazione offre un'interfaccia grafica intuitiva con diversi moduli specializzati per ogni funzionalità.
