@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <SignAssembly>False</SignAssembly>
+    <DefaultItemExcludes>$(DefaultItemExcludes);LINUX\**</DefaultItemExcludes>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
     <Company>MasterSharp Team LLC.</Company>
     <Copyright>MasterSharp OpenSource Team</Copyright>
@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="DiscordRichPresence" Version="1.6.1.70" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

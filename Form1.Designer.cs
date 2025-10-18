@@ -18,626 +18,661 @@ namespace DiscordMultiTool
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            
-            this.leftPanel = new System.Windows.Forms.Panel();
-            this.highlightPanel = new System.Windows.Forms.Panel();
-            this.btnSettings = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            
-            this.contentPanel = new System.Windows.Forms.Panel();
-            
-            this.settingsPanel = new System.Windows.Forms.Panel();
-            this.languageComboBox = new System.Windows.Forms.ComboBox();
-            this.lblLanguage = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            
-            this.richPresencePanel = new System.Windows.Forms.Panel();
-            this.rpcButton1 = new System.Windows.Forms.Button();
-            this.rpcTextBox1 = new System.Windows.Forms.TextBox();
-            this.rpcTextBox2 = new System.Windows.Forms.TextBox();
-            this.rpcTextBox3 = new System.Windows.Forms.TextBox();
-            this.rpcTextBox4 = new System.Windows.Forms.TextBox();
-            this.rpcTextBox5 = new System.Windows.Forms.TextBox();
-            this.rpcLinkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.rpcLabel1 = new System.Windows.Forms.Label();
-            this.rpcLabel2 = new System.Windows.Forms.Label();
-            this.rpcLabel3 = new System.Windows.Forms.Label();
-            this.rpcLabel4 = new System.Windows.Forms.Label();
-            this.rpcLabel5 = new System.Windows.Forms.Label();
-            
-            this.botPanel = new System.Windows.Forms.Panel();
-            this.botButton1 = new System.Windows.Forms.Button();
-            this.botLabel1 = new System.Windows.Forms.Label();
-            
-            this.dllPanel = new System.Windows.Forms.Panel();
-            this.dllButton1 = new System.Windows.Forms.Button();
-            this.dllLabel1 = new System.Windows.Forms.Label();
-            
-            this.leftPanel.SuspendLayout();
-            this.contentPanel.SuspendLayout();
-            this.settingsPanel.SuspendLayout();
-            this.richPresencePanel.SuspendLayout();
-            this.botPanel.SuspendLayout();
-            this.dllPanel.SuspendLayout();
-            this.SuspendLayout();
-            
+            leftPanel = new Panel();
+            highlightPanel = new Panel();
+            button1 = new Button();
+            button2 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button3 = new Button();
+            button8 = new Button();
+            button7 = new Button();
+            button6 = new Button();
+            btnSettings = new Button();
+            label1 = new Label();
+            contentPanel = new Panel();
+            settingsPanel = new Panel();
+            languageComboBox = new ComboBox();
+            lblLanguage = new Label();
+            checkBox1 = new CheckBox();
+            label5 = new Label();
+            textBox2 = new TextBox();
+            label4 = new Label();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            button11 = new Button();
+            button10 = new Button();
+            richPresencePanel = new Panel();
+            rpcLabel1 = new Label();
+            rpcLabel2 = new Label();
+            rpcLabel3 = new Label();
+            rpcLabel4 = new Label();
+            rpcLabel5 = new Label();
+            rpcTextBox5 = new TextBox();
+            rpcLinkLabel1 = new LinkLabel();
+            rpcTextBox4 = new TextBox();
+            rpcTextBox3 = new TextBox();
+            rpcTextBox2 = new TextBox();
+            rpcTextBox1 = new TextBox();
+            rpcButton1 = new Button();
+            telegramPanel = new Panel();
+            botPanel = new Panel();
+            botLabel1 = new Label();
+            botButton1 = new Button();
+            dllPanel = new Panel();
+            dllLabel1 = new Label();
+            dllButton1 = new Button();
+            button9 = new Button();
+            leftPanel.SuspendLayout();
+            contentPanel.SuspendLayout();
+            settingsPanel.SuspendLayout();
+            richPresencePanel.SuspendLayout();
+            botPanel.SuspendLayout();
+            dllPanel.SuspendLayout();
+            SuspendLayout();
+            // 
             // leftPanel
-            this.leftPanel.BackColor = System.Drawing.Color.FromArgb(32, 34, 37);
-            this.leftPanel.Controls.Add(this.highlightPanel);
-            this.leftPanel.Controls.Add(this.button1);
-            this.leftPanel.Controls.Add(this.button2);
-            this.leftPanel.Controls.Add(this.button4);
-            this.leftPanel.Controls.Add(this.button5);
-            this.leftPanel.Controls.Add(this.button3);
-            this.leftPanel.Controls.Add(this.button8);
-            this.leftPanel.Controls.Add(this.button7);
-            this.leftPanel.Controls.Add(this.button6);
-            this.leftPanel.Controls.Add(this.btnSettings);
-            this.leftPanel.Controls.Add(this.label1);
-            this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.leftPanel.Location = new System.Drawing.Point(0, 0);
-            this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(280, 720);
-            this.leftPanel.TabIndex = 0;
-            
+            // 
+            leftPanel.BackColor = Color.FromArgb(32, 34, 37);
+            leftPanel.Controls.Add(highlightPanel);
+            leftPanel.Controls.Add(button1);
+            leftPanel.Controls.Add(button2);
+            leftPanel.Controls.Add(button4);
+            leftPanel.Controls.Add(button5);
+            leftPanel.Controls.Add(button3);
+            leftPanel.Controls.Add(button8);
+            leftPanel.Controls.Add(button7);
+            leftPanel.Controls.Add(button6);
+            leftPanel.Controls.Add(btnSettings);
+            leftPanel.Controls.Add(label1);
+            leftPanel.Dock = DockStyle.Left;
+            leftPanel.Location = new Point(0, 0);
+            leftPanel.Name = "leftPanel";
+            leftPanel.Size = new Size(280, 720);
+            leftPanel.TabIndex = 0;
+            // 
             // highlightPanel
-            this.highlightPanel.BackColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.highlightPanel.Location = new System.Drawing.Point(8, 496);
-            this.highlightPanel.Name = "highlightPanel";
-            this.highlightPanel.Size = new System.Drawing.Size(4, 50);
-            this.highlightPanel.TabIndex = 100;
-            
+            // 
+            highlightPanel.BackColor = Color.FromArgb(114, 137, 218);
+            highlightPanel.Location = new Point(8, 496);
+            highlightPanel.Name = "highlightPanel";
+            highlightPanel.Size = new Size(4, 50);
+            highlightPanel.TabIndex = 100;
+            // 
             // button1
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(256, 50);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Discord Rich Presence";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            this.button1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            button1.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 11F);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(12, 20);
+            button1.Name = "button1";
+            button1.Padding = new Padding(15, 0, 0, 0);
+            button1.Size = new Size(256, 50);
+            button1.TabIndex = 0;
+            button1.Text = "Discord Rich Presence";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += Button1_Click;
+            // 
             // button2
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(12, 76);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(256, 50);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Discord Bot (Python)";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            this.button2.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            button2.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 11F);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(12, 76);
+            button2.Name = "button2";
+            button2.Padding = new Padding(15, 0, 0, 0);
+            button2.Size = new Size(256, 50);
+            button2.TabIndex = 1;
+            button2.Text = "Discord Bot (Python)";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += Button2_Click;
+            // 
             // button4
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(12, 132);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(256, 50);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Inject DLL";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
-            this.button4.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            button4.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 11F);
+            button4.ForeColor = Color.White;
+            button4.Location = new Point(12, 132);
+            button4.Name = "button4";
+            button4.Padding = new Padding(15, 0, 0, 0);
+            button4.Size = new Size(256, 50);
+            button4.TabIndex = 3;
+            button4.Text = "Inject DLL";
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += Button4_Click;
+            // 
             // button5
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(12, 188);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(256, 50);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Discord Connection";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.Button5_Click);
-            this.button5.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            button5.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI", 11F);
+            button5.ForeColor = Color.White;
+            button5.Location = new Point(12, 188);
+            button5.Name = "button5";
+            button5.Padding = new Padding(15, 0, 0, 0);
+            button5.Size = new Size(256, 50);
+            button5.TabIndex = 4;
+            button5.Text = "Discord Connection";
+            button5.TextAlign = ContentAlignment.MiddleLeft;
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += Button5_Click;
+            // 
             // button3
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(12, 244);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(256, 50);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Developer Portal";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            this.button3.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            button3.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 11F);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(12, 244);
+            button3.Name = "button3";
+            button3.Padding = new Padding(15, 0, 0, 0);
+            button3.Size = new Size(256, 50);
+            button3.TabIndex = 2;
+            button3.Text = "Developer Portal";
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += Button3_Click;
+            // 
             // button8
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(12, 300);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(256, 50);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Misc Tools";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.Button8_Click);
-            this.button8.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            button8.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button8.FlatAppearance.BorderSize = 0;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Segoe UI", 11F);
+            button8.ForeColor = Color.White;
+            button8.Location = new Point(12, 300);
+            button8.Name = "button8";
+            button8.Padding = new Padding(15, 0, 0, 0);
+            button8.Size = new Size(256, 50);
+            button8.TabIndex = 7;
+            button8.Text = "Telegram Features";
+            button8.TextAlign = ContentAlignment.MiddleLeft;
+            button8.UseVisualStyleBackColor = false;
+            button8.Click += Button8_Click;
+            // 
             // button7
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button7.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(240, 71, 71);
-            this.button7.Location = new System.Drawing.Point(12, 370);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(256, 50);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Close Discord";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.Button7_Click);
-            this.button7.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            button7.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button7.ForeColor = Color.FromArgb(240, 71, 71);
+            button7.Location = new Point(12, 370);
+            button7.Name = "button7";
+            button7.Padding = new Padding(15, 0, 0, 0);
+            button7.Size = new Size(256, 50);
+            button7.TabIndex = 6;
+            button7.Text = "Close Discord";
+            button7.TextAlign = ContentAlignment.MiddleLeft;
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += Button7_Click;
+            // 
             // button6
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.button6.ForeColor = System.Drawing.Color.FromArgb(240, 71, 71);
-            this.button6.Location = new System.Drawing.Point(12, 426);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(256, 50);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Exit Application";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.Button6_Click);
-            this.button6.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            button6.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            button6.ForeColor = Color.FromArgb(240, 71, 71);
+            button6.Location = new Point(12, 426);
+            button6.Name = "button6";
+            button6.Padding = new Padding(15, 0, 0, 0);
+            button6.Size = new Size(256, 50);
+            button6.TabIndex = 5;
+            button6.Text = "Exit Application";
+            button6.TextAlign = ContentAlignment.MiddleLeft;
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += Button6_Click;
+            // 
             // btnSettings
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.FlatAppearance.BorderSize = 0;
-            this.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.btnSettings.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Location = new System.Drawing.Point(12, 496);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(256, 50);
-            this.btnSettings.TabIndex = 8;
-            this.btnSettings.Text = "⚙ Settings";
-            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnSettings.UseVisualStyleBackColor = false;
-            this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
-            this.btnSettings.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 50, 10, 10));
-            
+            // 
+            btnSettings.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            btnSettings.FlatAppearance.BorderSize = 0;
+            btnSettings.FlatStyle = FlatStyle.Flat;
+            btnSettings.Font = new Font("Segoe UI", 11F);
+            btnSettings.ForeColor = Color.White;
+            btnSettings.Location = new Point(12, 496);
+            btnSettings.Name = "btnSettings";
+            btnSettings.Padding = new Padding(15, 0, 0, 0);
+            btnSettings.Size = new Size(256, 50);
+            btnSettings.TabIndex = 8;
+            btnSettings.Text = "⚙ Settings";
+            btnSettings.TextAlign = ContentAlignment.MiddleLeft;
+            btnSettings.UseVisualStyleBackColor = false;
+            btnSettings.Click += BtnSettings_Click;
+            // 
             // label1
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(142, 146, 151);
-            this.label1.Location = new System.Drawing.Point(12, 650);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(256, 60);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "DiscordMultiTool v1.1.0\nMasterSharp Team LLC.";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            
+            // 
+            label1.Font = new Font("Segoe UI", 9F);
+            label1.ForeColor = Color.FromArgb(142, 146, 151);
+            label1.Location = new Point(12, 650);
+            label1.Name = "label1";
+            label1.Size = new Size(256, 60);
+            label1.TabIndex = 9;
+            label1.Text = "DiscordMultiTool V2.1.0\r\nMasterSharp Team LLC.";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // contentPanel
-            this.contentPanel.BackColor = System.Drawing.Color.FromArgb(47, 49, 54);
-            this.contentPanel.Controls.Add(this.settingsPanel);
-            this.contentPanel.Controls.Add(this.richPresencePanel);
-            this.contentPanel.Controls.Add(this.botPanel);
-            this.contentPanel.Controls.Add(this.dllPanel);
-            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(280, 0);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(920, 720);
-            this.contentPanel.TabIndex = 1;
-            
+            // 
+            contentPanel.BackColor = Color.FromArgb(47, 49, 54);
+            contentPanel.Controls.Add(settingsPanel);
+            contentPanel.Controls.Add(richPresencePanel);
+            contentPanel.Controls.Add(telegramPanel);
+            contentPanel.Controls.Add(botPanel);
+            contentPanel.Controls.Add(dllPanel);
+            contentPanel.Dock = DockStyle.Fill;
+            contentPanel.Location = new Point(280, 0);
+            contentPanel.Name = "contentPanel";
+            contentPanel.Size = new Size(920, 720);
+            contentPanel.TabIndex = 1;
+            // 
             // settingsPanel
-            this.settingsPanel.BackColor = System.Drawing.Color.FromArgb(47, 49, 54);
-            this.settingsPanel.Controls.Add(this.languageComboBox);
-            this.settingsPanel.Controls.Add(this.lblLanguage);
-            this.settingsPanel.Controls.Add(this.checkBox1);
-            this.settingsPanel.Controls.Add(this.label5);
-            this.settingsPanel.Controls.Add(this.textBox2);
-            this.settingsPanel.Controls.Add(this.label4);
-            this.settingsPanel.Controls.Add(this.label3);
-            this.settingsPanel.Controls.Add(this.textBox1);
-            this.settingsPanel.Controls.Add(this.button11);
-            this.settingsPanel.Controls.Add(this.button10);
-            this.settingsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsPanel.Location = new System.Drawing.Point(0, 0);
-            this.settingsPanel.Name = "settingsPanel";
-            this.settingsPanel.Size = new System.Drawing.Size(920, 720);
-            this.settingsPanel.TabIndex = 0;
-            
+            // 
+            settingsPanel.BackColor = Color.FromArgb(47, 49, 54);
+            settingsPanel.Controls.Add(languageComboBox);
+            settingsPanel.Controls.Add(lblLanguage);
+            settingsPanel.Controls.Add(checkBox1);
+            settingsPanel.Controls.Add(label5);
+            settingsPanel.Controls.Add(textBox2);
+            settingsPanel.Controls.Add(label4);
+            settingsPanel.Controls.Add(label3);
+            settingsPanel.Controls.Add(textBox1);
+            settingsPanel.Controls.Add(button11);
+            settingsPanel.Controls.Add(button10);
+            settingsPanel.Dock = DockStyle.Fill;
+            settingsPanel.Location = new Point(0, 0);
+            settingsPanel.Name = "settingsPanel";
+            settingsPanel.Size = new Size(920, 720);
+            settingsPanel.TabIndex = 0;
+            // 
             // languageComboBox
-            this.languageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.languageComboBox.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.languageComboBox.FormattingEnabled = true;
-            this.languageComboBox.Items.AddRange(new object[] { "English", "Italiano" });
-            this.languageComboBox.Location = new System.Drawing.Point(180, 360);
-            this.languageComboBox.Name = "languageComboBox";
-            this.languageComboBox.Size = new System.Drawing.Size(200, 28);
-            this.languageComboBox.TabIndex = 10;
-            this.languageComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageComboBox_SelectedIndexChanged);
-            
+            // 
+            languageComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            languageComboBox.Font = new Font("Segoe UI", 11F);
+            languageComboBox.FormattingEnabled = true;
+            languageComboBox.Items.AddRange(new object[] { "English", "Italiano" });
+            languageComboBox.Location = new Point(130, 245);
+            languageComboBox.Name = "languageComboBox";
+            languageComboBox.Size = new Size(200, 28);
+            languageComboBox.TabIndex = 10;
+            languageComboBox.SelectedIndexChanged += LanguageComboBox_SelectedIndexChanged;
+            // 
             // lblLanguage
-            this.lblLanguage.AutoSize = true;
-            this.lblLanguage.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblLanguage.ForeColor = System.Drawing.Color.White;
-            this.lblLanguage.Location = new System.Drawing.Point(50, 363);
-            this.lblLanguage.Name = "lblLanguage";
-            this.lblLanguage.Size = new System.Drawing.Size(80, 21);
-            this.lblLanguage.TabIndex = 9;
-            this.lblLanguage.Text = "Language";
-            
+            // 
+            lblLanguage.AutoSize = true;
+            lblLanguage.Font = new Font("Segoe UI", 12F);
+            lblLanguage.ForeColor = Color.White;
+            lblLanguage.Location = new Point(45, 248);
+            lblLanguage.Name = "lblLanguage";
+            lblLanguage.Size = new Size(78, 21);
+            lblLanguage.TabIndex = 9;
+            lblLanguage.Text = "Language";
+            // 
             // checkBox1
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(560, 248);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(160, 23);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Auto Save Settings";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
-            
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Font = new Font("Segoe UI", 10F);
+            checkBox1.ForeColor = Color.White;
+            checkBox1.Location = new Point(560, 248);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(143, 23);
+            checkBox1.TabIndex = 8;
+            checkBox1.Text = "Auto Save Settings";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += CheckBox1_CheckedChanged;
+            // 
             // label5
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(420, 250);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 21);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Save Settings";
-            
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(420, 250);
+            label5.Name = "label5";
+            label5.Size = new Size(103, 21);
+            label5.TabIndex = 7;
+            label5.Text = "Save Settings";
+            // 
             // textBox2
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.textBox2.Location = new System.Drawing.Point(560, 150);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(300, 27);
-            this.textBox2.TabIndex = 6;
-            
+            // 
+            textBox2.Font = new Font("Segoe UI", 11F);
+            textBox2.Location = new Point(560, 150);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(300, 27);
+            textBox2.TabIndex = 6;
+            // 
             // label4
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(420, 153);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 21);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Target Server";
-            
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(420, 153);
+            label4.Name = "label4";
+            label4.Size = new Size(101, 21);
+            label4.TabIndex = 5;
+            label4.Text = "Target Server";
+            // 
             // label3
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(420, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 21);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Discord Account";
-            
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(420, 60);
+            label3.Name = "label3";
+            label3.Size = new Size(123, 21);
+            label3.TabIndex = 4;
+            label3.Text = "Discord Account";
+            // 
             // textBox1
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.textBox1.Location = new System.Drawing.Point(560, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(300, 27);
-            this.textBox1.TabIndex = 3;
-            
+            // 
+            textBox1.Font = new Font("Segoe UI", 11F);
+            textBox1.Location = new Point(560, 57);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(300, 27);
+            textBox1.TabIndex = 3;
+            // 
             // button11
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(50, 250);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(280, 45);
-            this.button11.TabIndex = 2;
-            this.button11.Text = "Apply Discord Patch";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.Button11_Click);
-            this.button11.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 280, 45, 10, 10));
-            
+            // 
+            button11.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button11.FlatAppearance.BorderSize = 0;
+            button11.FlatStyle = FlatStyle.Flat;
+            button11.Font = new Font("Segoe UI", 11F);
+            button11.ForeColor = Color.White;
+            button11.Location = new Point(50, 142);
+            button11.Name = "button11";
+            button11.Size = new Size(280, 45);
+            button11.TabIndex = 2;
+            button11.Text = "Apply Discord Patch";
+            button11.UseVisualStyleBackColor = false;
+            button11.Click += Button11_Click;
+            // 
             // button10
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(50, 150);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(280, 45);
-            this.button10.TabIndex = 1;
-            this.button10.Text = "Change Theme";
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.Button10_Click);
-            this.button10.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 280, 45, 10, 10));
-            
-            
+            // 
+            button10.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            button10.FlatAppearance.BorderSize = 0;
+            button10.FlatStyle = FlatStyle.Flat;
+            button10.Font = new Font("Segoe UI", 11F);
+            button10.ForeColor = Color.White;
+            button10.Location = new Point(50, 48);
+            button10.Name = "button10";
+            button10.Size = new Size(280, 45);
+            button10.TabIndex = 1;
+            button10.Text = "Change Theme";
+            button10.UseVisualStyleBackColor = false;
+            button10.Click += Button10_Click;
+            // 
             // richPresencePanel
-            this.richPresencePanel.BackColor = System.Drawing.Color.FromArgb(47, 49, 54);
-            this.richPresencePanel.Controls.Add(this.rpcLabel1);
-            this.richPresencePanel.Controls.Add(this.rpcLabel2);
-            this.richPresencePanel.Controls.Add(this.rpcLabel3);
-            this.richPresencePanel.Controls.Add(this.rpcLabel4);
-            this.richPresencePanel.Controls.Add(this.rpcLabel5);
-            this.richPresencePanel.Controls.Add(this.rpcTextBox5);
-            this.richPresencePanel.Controls.Add(this.rpcLinkLabel1);
-            this.richPresencePanel.Controls.Add(this.rpcTextBox4);
-            this.richPresencePanel.Controls.Add(this.rpcTextBox3);
-            this.richPresencePanel.Controls.Add(this.rpcTextBox2);
-            this.richPresencePanel.Controls.Add(this.rpcTextBox1);
-            this.richPresencePanel.Controls.Add(this.rpcButton1);
-            this.richPresencePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richPresencePanel.Location = new System.Drawing.Point(0, 0);
-            this.richPresencePanel.Name = "richPresencePanel";
-            this.richPresencePanel.Size = new System.Drawing.Size(920, 720);
-            this.richPresencePanel.TabIndex = 1;
-            this.richPresencePanel.Visible = false;
-            
+            // 
+            richPresencePanel.BackColor = Color.FromArgb(47, 49, 54);
+            richPresencePanel.Controls.Add(rpcLabel1);
+            richPresencePanel.Controls.Add(rpcLabel2);
+            richPresencePanel.Controls.Add(rpcLabel3);
+            richPresencePanel.Controls.Add(rpcLabel4);
+            richPresencePanel.Controls.Add(rpcLabel5);
+            richPresencePanel.Controls.Add(rpcTextBox5);
+            richPresencePanel.Controls.Add(rpcLinkLabel1);
+            richPresencePanel.Controls.Add(rpcTextBox4);
+            richPresencePanel.Controls.Add(rpcTextBox3);
+            richPresencePanel.Controls.Add(rpcTextBox2);
+            richPresencePanel.Controls.Add(rpcTextBox1);
+            richPresencePanel.Controls.Add(rpcButton1);
+            richPresencePanel.Dock = DockStyle.Fill;
+            richPresencePanel.Location = new Point(0, 0);
+            richPresencePanel.Name = "richPresencePanel";
+            richPresencePanel.Size = new Size(920, 720);
+            richPresencePanel.TabIndex = 1;
+            richPresencePanel.Visible = false;
+            // 
             // rpcLabel1
-            this.rpcLabel1.AutoSize = true;
-            this.rpcLabel1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcLabel1.ForeColor = System.Drawing.Color.FromArgb(142, 146, 151);
-            this.rpcLabel1.Location = new System.Drawing.Point(80, 80);
-            this.rpcLabel1.Name = "rpcLabel1";
-            this.rpcLabel1.Size = new System.Drawing.Size(105, 20);
-            this.rpcLabel1.TabIndex = 11;
-            this.rpcLabel1.Text = "Application ID";
-            
+            // 
+            rpcLabel1.AutoSize = true;
+            rpcLabel1.Font = new Font("Segoe UI", 11F);
+            rpcLabel1.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel1.Location = new Point(80, 80);
+            rpcLabel1.Name = "rpcLabel1";
+            rpcLabel1.Size = new Size(105, 20);
+            rpcLabel1.TabIndex = 11;
+            rpcLabel1.Text = "Application ID";
+            // 
             // rpcLabel2
-            this.rpcLabel2.AutoSize = true;
-            this.rpcLabel2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcLabel2.ForeColor = System.Drawing.Color.FromArgb(142, 146, 151);
-            this.rpcLabel2.Location = new System.Drawing.Point(80, 160);
-            this.rpcLabel2.Name = "rpcLabel2";
-            this.rpcLabel2.Size = new System.Drawing.Size(41, 20);
-            this.rpcLabel2.TabIndex = 12;
-            this.rpcLabel2.Text = "State";
-            
+            // 
+            rpcLabel2.AutoSize = true;
+            rpcLabel2.Font = new Font("Segoe UI", 11F);
+            rpcLabel2.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel2.Location = new Point(80, 160);
+            rpcLabel2.Name = "rpcLabel2";
+            rpcLabel2.Size = new Size(43, 20);
+            rpcLabel2.TabIndex = 12;
+            rpcLabel2.Text = "State";
+            // 
             // rpcLabel3
-            this.rpcLabel3.AutoSize = true;
-            this.rpcLabel3.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcLabel3.ForeColor = System.Drawing.Color.FromArgb(142, 146, 151);
-            this.rpcLabel3.Location = new System.Drawing.Point(80, 240);
-            this.rpcLabel3.Name = "rpcLabel3";
-            this.rpcLabel3.Size = new System.Drawing.Size(85, 20);
-            this.rpcLabel3.TabIndex = 13;
-            this.rpcLabel3.Text = "Image Text";
-            
+            // 
+            rpcLabel3.AutoSize = true;
+            rpcLabel3.Font = new Font("Segoe UI", 11F);
+            rpcLabel3.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel3.Location = new Point(80, 240);
+            rpcLabel3.Name = "rpcLabel3";
+            rpcLabel3.Size = new Size(82, 20);
+            rpcLabel3.TabIndex = 13;
+            rpcLabel3.Text = "Image Text";
+            // 
             // rpcLabel4
-            this.rpcLabel4.AutoSize = true;
-            this.rpcLabel4.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcLabel4.ForeColor = System.Drawing.Color.FromArgb(142, 146, 151);
-            this.rpcLabel4.Location = new System.Drawing.Point(80, 320);
-            this.rpcLabel4.Name = "rpcLabel4";
-            this.rpcLabel4.Size = new System.Drawing.Size(58, 20);
-            this.rpcLabel4.TabIndex = 14;
-            this.rpcLabel4.Text = "Details";
-            
+            // 
+            rpcLabel4.AutoSize = true;
+            rpcLabel4.Font = new Font("Segoe UI", 11F);
+            rpcLabel4.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel4.Location = new Point(80, 320);
+            rpcLabel4.Name = "rpcLabel4";
+            rpcLabel4.Size = new Size(55, 20);
+            rpcLabel4.TabIndex = 14;
+            rpcLabel4.Text = "Details";
+            // 
             // rpcLabel5
-            this.rpcLabel5.AutoSize = true;
-            this.rpcLabel5.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcLabel5.ForeColor = System.Drawing.Color.FromArgb(142, 146, 151);
-            this.rpcLabel5.Location = new System.Drawing.Point(80, 400);
-            this.rpcLabel5.Name = "rpcLabel5";
-            this.rpcLabel5.Size = new System.Drawing.Size(92, 20);
-            this.rpcLabel5.TabIndex = 15;
-            this.rpcLabel5.Text = "Image Name";
-            
-            // rpcButton1
-            this.rpcButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rpcButton1.FlatAppearance.BorderSize = 0;
-            this.rpcButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.rpcButton1.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.rpcButton1.ForeColor = System.Drawing.Color.White;
-            this.rpcButton1.Location = new System.Drawing.Point(280, 500);
-            this.rpcButton1.Name = "rpcButton1";
-            this.rpcButton1.Size = new System.Drawing.Size(360, 55);
-            this.rpcButton1.TabIndex = 2;
-            this.rpcButton1.Text = "Load Discord RPC";
-            this.rpcButton1.UseVisualStyleBackColor = false;
-            this.rpcButton1.Click += new System.EventHandler(this.RpcButton1_Click);
-            this.rpcButton1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 360, 55, 15, 15));
-            
-            // rpcTextBox1
-            this.rpcTextBox1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcTextBox1.Location = new System.Drawing.Point(80, 110);
-            this.rpcTextBox1.Name = "rpcTextBox1";
-            this.rpcTextBox1.Size = new System.Drawing.Size(760, 27);
-            this.rpcTextBox1.TabIndex = 3;
-            this.rpcTextBox1.Text = "";
-            
-            // rpcTextBox2
-            this.rpcTextBox2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcTextBox2.Location = new System.Drawing.Point(80, 190);
-            this.rpcTextBox2.Name = "rpcTextBox2";
-            this.rpcTextBox2.Size = new System.Drawing.Size(760, 27);
-            this.rpcTextBox2.TabIndex = 4;
-            this.rpcTextBox2.Text = "";
-            
-            // rpcTextBox3
-            this.rpcTextBox3.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcTextBox3.Location = new System.Drawing.Point(80, 270);
-            this.rpcTextBox3.Name = "rpcTextBox3";
-            this.rpcTextBox3.Size = new System.Drawing.Size(760, 27);
-            this.rpcTextBox3.TabIndex = 5;
-            this.rpcTextBox3.Text = "";
-            
-            // rpcTextBox4
-            this.rpcTextBox4.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcTextBox4.Location = new System.Drawing.Point(80, 350);
-            this.rpcTextBox4.Name = "rpcTextBox4";
-            this.rpcTextBox4.Size = new System.Drawing.Size(760, 27);
-            this.rpcTextBox4.TabIndex = 6;
-            this.rpcTextBox4.Text = "";
-            
+            // 
+            rpcLabel5.AutoSize = true;
+            rpcLabel5.Font = new Font("Segoe UI", 11F);
+            rpcLabel5.ForeColor = Color.FromArgb(142, 146, 151);
+            rpcLabel5.Location = new Point(80, 400);
+            rpcLabel5.Name = "rpcLabel5";
+            rpcLabel5.Size = new Size(95, 20);
+            rpcLabel5.TabIndex = 15;
+            rpcLabel5.Text = "Image Name";
+            // 
             // rpcTextBox5
-            this.rpcTextBox5.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcTextBox5.Location = new System.Drawing.Point(80, 430);
-            this.rpcTextBox5.Name = "rpcTextBox5";
-            this.rpcTextBox5.Size = new System.Drawing.Size(760, 27);
-            this.rpcTextBox5.TabIndex = 8;
-            this.rpcTextBox5.Text = "";
-            
+            // 
+            rpcTextBox5.Font = new Font("Segoe UI", 11F);
+            rpcTextBox5.Location = new Point(80, 430);
+            rpcTextBox5.Name = "rpcTextBox5";
+            rpcTextBox5.Size = new Size(760, 27);
+            rpcTextBox5.TabIndex = 8;
+            // 
             // rpcLinkLabel1
-            this.rpcLinkLabel1.AutoSize = true;
-            this.rpcLinkLabel1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.rpcLinkLabel1.LinkColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.rpcLinkLabel1.Location = new System.Drawing.Point(80, 590);
-            this.rpcLinkLabel1.Name = "rpcLinkLabel1";
-            this.rpcLinkLabel1.Size = new System.Drawing.Size(40, 20);
-            this.rpcLinkLabel1.TabIndex = 7;
-            this.rpcLinkLabel1.TabStop = true;
-            this.rpcLinkLabel1.Text = "Help";
-            this.rpcLinkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.rpcLinkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.RpcLinkLabel1_LinkClicked);
-            
+            // 
+            rpcLinkLabel1.AutoSize = true;
+            rpcLinkLabel1.Font = new Font("Segoe UI", 11F);
+            rpcLinkLabel1.LinkColor = Color.FromArgb(114, 137, 218);
+            rpcLinkLabel1.Location = new Point(80, 590);
+            rpcLinkLabel1.Name = "rpcLinkLabel1";
+            rpcLinkLabel1.Size = new Size(41, 20);
+            rpcLinkLabel1.TabIndex = 7;
+            rpcLinkLabel1.TabStop = true;
+            rpcLinkLabel1.Text = "Help";
+            rpcLinkLabel1.VisitedLinkColor = Color.FromArgb(114, 137, 218);
+            rpcLinkLabel1.LinkClicked += RpcLinkLabel1_LinkClicked;
+            // 
+            // rpcTextBox4
+            // 
+            rpcTextBox4.Font = new Font("Segoe UI", 11F);
+            rpcTextBox4.Location = new Point(80, 350);
+            rpcTextBox4.Name = "rpcTextBox4";
+            rpcTextBox4.Size = new Size(760, 27);
+            rpcTextBox4.TabIndex = 6;
+            // 
+            // rpcTextBox3
+            // 
+            rpcTextBox3.Font = new Font("Segoe UI", 11F);
+            rpcTextBox3.Location = new Point(80, 270);
+            rpcTextBox3.Name = "rpcTextBox3";
+            rpcTextBox3.Size = new Size(760, 27);
+            rpcTextBox3.TabIndex = 5;
+            // 
+            // rpcTextBox2
+            // 
+            rpcTextBox2.Font = new Font("Segoe UI", 11F);
+            rpcTextBox2.Location = new Point(80, 190);
+            rpcTextBox2.Name = "rpcTextBox2";
+            rpcTextBox2.Size = new Size(760, 27);
+            rpcTextBox2.TabIndex = 4;
+            // 
+            // rpcTextBox1
+            // 
+            rpcTextBox1.Font = new Font("Segoe UI", 11F);
+            rpcTextBox1.Location = new Point(80, 110);
+            rpcTextBox1.Name = "rpcTextBox1";
+            rpcTextBox1.Size = new Size(760, 27);
+            rpcTextBox1.TabIndex = 3;
+            // 
+            // rpcButton1
+            // 
+            rpcButton1.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            rpcButton1.FlatAppearance.BorderSize = 0;
+            rpcButton1.FlatStyle = FlatStyle.Flat;
+            rpcButton1.Font = new Font("Segoe UI", 13F);
+            rpcButton1.ForeColor = Color.White;
+            rpcButton1.Location = new Point(280, 500);
+            rpcButton1.Name = "rpcButton1";
+            rpcButton1.Size = new Size(360, 55);
+            rpcButton1.TabIndex = 2;
+            rpcButton1.Text = "Load Discord RPC";
+            rpcButton1.UseVisualStyleBackColor = false;
+            rpcButton1.Click += RpcButton1_Click;
+            // 
+            // telegramPanel
+            // 
+            telegramPanel.BackColor = Color.FromArgb(47, 49, 54);
+            telegramPanel.Dock = DockStyle.Fill;
+            telegramPanel.Location = new Point(0, 0);
+            telegramPanel.Name = "telegramPanel";
+            telegramPanel.Size = new Size(920, 720);
+            telegramPanel.TabIndex = 4;
+            // 
             // botPanel
-            this.botPanel.BackColor = System.Drawing.Color.FromArgb(47, 49, 54);
-            this.botPanel.Controls.Add(this.botLabel1);
-            this.botPanel.Controls.Add(this.botButton1);
-            this.botPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.botPanel.Location = new System.Drawing.Point(0, 0);
-            this.botPanel.Name = "botPanel";
-            this.botPanel.Size = new System.Drawing.Size(920, 720);
-            this.botPanel.TabIndex = 2;
-            this.botPanel.Visible = false;
-            
+            // 
+            botPanel.BackColor = Color.FromArgb(47, 49, 54);
+            botPanel.Controls.Add(botLabel1);
+            botPanel.Controls.Add(botButton1);
+            botPanel.Dock = DockStyle.Fill;
+            botPanel.Location = new Point(0, 0);
+            botPanel.Name = "botPanel";
+            botPanel.Size = new Size(920, 720);
+            botPanel.TabIndex = 2;
+            botPanel.Visible = false;
+            // 
             // botLabel1
-            this.botLabel1.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.botLabel1.ForeColor = System.Drawing.Color.White;
-            this.botLabel1.Location = new System.Drawing.Point(100, 100);
-            this.botLabel1.Name = "botLabel1";
-            this.botLabel1.Size = new System.Drawing.Size(720, 100);
-            this.botLabel1.TabIndex = 1;
-            this.botLabel1.Text = "Load your Discord Bot written in Python.\nThis tool will check for Python, install dependencies if needed,\nand run your bot in the background.";
-            this.botLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            
+            // 
+            botLabel1.Font = new Font("Segoe UI", 13F);
+            botLabel1.ForeColor = Color.White;
+            botLabel1.Location = new Point(100, 100);
+            botLabel1.Name = "botLabel1";
+            botLabel1.Size = new Size(720, 100);
+            botLabel1.TabIndex = 1;
+            botLabel1.Text = "Load your Discord Bot written in Python.\nThis tool will check for Python, install dependencies if needed,\nand run your bot in the background.";
+            botLabel1.TextAlign = ContentAlignment.TopCenter;
+            // 
             // botButton1
-            this.botButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botButton1.FlatAppearance.BorderSize = 0;
-            this.botButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.botButton1.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.botButton1.ForeColor = System.Drawing.Color.White;
-            this.botButton1.Location = new System.Drawing.Point(280, 300);
-            this.botButton1.Name = "botButton1";
-            this.botButton1.Size = new System.Drawing.Size(360, 55);
-            this.botButton1.TabIndex = 0;
-            this.botButton1.Text = "Select Bot File";
-            this.botButton1.UseVisualStyleBackColor = false;
-            this.botButton1.Click += new System.EventHandler(this.BotButton1_Click);
-            this.botButton1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 360, 55, 15, 15));
-            
+            // 
+            botButton1.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            botButton1.FlatAppearance.BorderSize = 0;
+            botButton1.FlatStyle = FlatStyle.Flat;
+            botButton1.Font = new Font("Segoe UI", 13F);
+            botButton1.ForeColor = Color.White;
+            botButton1.Location = new Point(280, 300);
+            botButton1.Name = "botButton1";
+            botButton1.Size = new Size(360, 55);
+            botButton1.TabIndex = 0;
+            botButton1.Text = "Select Bot File";
+            botButton1.UseVisualStyleBackColor = false;
+            botButton1.Click += BotButton1_Click;
+            // 
             // dllPanel
-            this.dllPanel.BackColor = System.Drawing.Color.FromArgb(47, 49, 54);
-            this.dllPanel.Controls.Add(this.dllLabel1);
-            this.dllPanel.Controls.Add(this.dllButton1);
-            this.dllPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dllPanel.Location = new System.Drawing.Point(0, 0);
-            this.dllPanel.Name = "dllPanel";
-            this.dllPanel.Size = new System.Drawing.Size(920, 720);
-            this.dllPanel.TabIndex = 3;
-            this.dllPanel.Visible = false;
-            
+            // 
+            dllPanel.BackColor = Color.FromArgb(47, 49, 54);
+            dllPanel.Controls.Add(dllLabel1);
+            dllPanel.Controls.Add(dllButton1);
+            dllPanel.Dock = DockStyle.Fill;
+            dllPanel.Location = new Point(0, 0);
+            dllPanel.Name = "dllPanel";
+            dllPanel.Size = new Size(920, 720);
+            dllPanel.TabIndex = 3;
+            dllPanel.Visible = false;
+            // 
             // dllLabel1
-            this.dllLabel1.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.dllLabel1.ForeColor = System.Drawing.Color.White;
-            this.dllLabel1.Location = new System.Drawing.Point(100, 100);
-            this.dllLabel1.Name = "dllLabel1";
-            this.dllLabel1.Size = new System.Drawing.Size(720, 100);
-            this.dllLabel1.TabIndex = 1;
-            this.dllLabel1.Text = "Inject a custom DLL into the Discord process.\nThis allows you to modify Discord's behavior.";
-            this.dllLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            
+            // 
+            dllLabel1.Font = new Font("Segoe UI", 13F);
+            dllLabel1.ForeColor = Color.White;
+            dllLabel1.Location = new Point(100, 100);
+            dllLabel1.Name = "dllLabel1";
+            dllLabel1.Size = new Size(720, 100);
+            dllLabel1.TabIndex = 1;
+            dllLabel1.Text = "Inject a custom DLL into the Discord process.\nThis allows you to modify Discord's behavior.";
+            dllLabel1.TextAlign = ContentAlignment.TopCenter;
+            // 
             // dllButton1
-            this.dllButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dllButton1.FlatAppearance.BorderSize = 0;
-            this.dllButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(114, 137, 218);
-            this.dllButton1.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.dllButton1.ForeColor = System.Drawing.Color.White;
-            this.dllButton1.Location = new System.Drawing.Point(280, 300);
-            this.dllButton1.Name = "dllButton1";
-            this.dllButton1.Size = new System.Drawing.Size(360, 55);
-            this.dllButton1.TabIndex = 0;
-            this.dllButton1.Text = "Select DLL File";
-            this.dllButton1.UseVisualStyleBackColor = false;
-            this.dllButton1.Click += new System.EventHandler(this.DllButton1_Click);
-            this.dllButton1.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, 360, 55, 15, 15));
-            
+            // 
+            dllButton1.FlatAppearance.BorderColor = Color.FromArgb(114, 137, 218);
+            dllButton1.FlatAppearance.BorderSize = 0;
+            dllButton1.FlatStyle = FlatStyle.Flat;
+            dllButton1.Font = new Font("Segoe UI", 13F);
+            dllButton1.ForeColor = Color.White;
+            dllButton1.Location = new Point(280, 300);
+            dllButton1.Name = "dllButton1";
+            dllButton1.Size = new Size(360, 55);
+            dllButton1.TabIndex = 0;
+            dllButton1.Text = "Select DLL File";
+            dllButton1.UseVisualStyleBackColor = false;
+            dllButton1.Click += DllButton1_Click;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(0, 0);
+            button9.Name = "button9";
+            button9.Size = new Size(75, 23);
+            button9.TabIndex = 0;
+            // 
             // Form1
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(54, 57, 63);
-            this.ClientSize = new System.Drawing.Size(1200, 720);
-            this.Controls.Add(this.contentPanel);
-            this.Controls.Add(this.leftPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Discord MultiTool";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.leftPanel.ResumeLayout(false);
-            this.contentPanel.ResumeLayout(false);
-            this.settingsPanel.ResumeLayout(false);
-            this.settingsPanel.PerformLayout();
-            this.richPresencePanel.ResumeLayout(false);
-            this.richPresencePanel.PerformLayout();
-            this.botPanel.ResumeLayout(false);
-            this.dllPanel.ResumeLayout(false);
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(54, 57, 63);
+            ClientSize = new Size(1200, 720);
+            Controls.Add(contentPanel);
+            Controls.Add(leftPanel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Discord MultiTool";
+            Load += Form1_Load;
+            leftPanel.ResumeLayout(false);
+            contentPanel.ResumeLayout(false);
+            settingsPanel.ResumeLayout(false);
+            settingsPanel.PerformLayout();
+            richPresencePanel.ResumeLayout(false);
+            richPresencePanel.PerformLayout();
+            botPanel.ResumeLayout(false);
+            dllPanel.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -673,6 +708,7 @@ namespace DiscordMultiTool
         private System.Windows.Forms.Button button9;
         
         private System.Windows.Forms.Panel richPresencePanel;
+    private System.Windows.Forms.Panel telegramPanel;
         private System.Windows.Forms.Button rpcButton1;
         private System.Windows.Forms.TextBox rpcTextBox1;
         private System.Windows.Forms.TextBox rpcTextBox2;

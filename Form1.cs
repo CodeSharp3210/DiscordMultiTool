@@ -21,7 +21,8 @@ namespace DiscordMultiTool
         private Panel currentPanel;
         private int highlightTargetY = 496;
         private bool isModernTheme = false;
-        
+        private bool _telegramDiagnosticsShown = false;
+
         private static DiscordRPC.DiscordRpcClient rpcClient;
         private CancellationTokenSource _cts;
 
@@ -31,7 +32,7 @@ namespace DiscordMultiTool
             InitializeTranslations();
             ConfigureButtonOutlines();
             this.FormClosing += Form1_FormClosing;
-            
+
             languageComboBox.SelectedIndex = 0;
             currentPanel = settingsPanel;
             settingsPanel.Visible = true;
@@ -64,45 +65,103 @@ namespace DiscordMultiTool
             ConfigureButtonOutline(dllButton1, outlineColor, radiusLarge);
         }
 
-        private void ConfigureButtonOutline(System.Windows.Forms.Button btn, Color color, int radius, float thickness = 3f)
+        private void ConfigureButtonOutline(System.Windows.Forms.Button btn, Color color, int radius, float thickness = 2.5f)
         {
             if (btn == null) return;
+
+            // Set button to flat style for better rendering
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+            // Store original Region to avoid conflicts
+            btn.Region = null;
+
             // Ensure we repaint when size changes
             btn.SizeChanged += (s, e) => btn.Invalidate();
+
             btn.Paint += (s, e) =>
             {
+                // Enable highest quality anti-aliasing
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                var rect = new Rectangle(1, 1, Math.Max(0, btn.Width - 3), Math.Max(0, btn.Height - 3));
+                e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+                e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
-                // Draw a slightly thicker inset outline so the previous thin border is hidden
+                // Draw background first
+                using (var bgPath = RoundedRectPath(new RectangleF(0, 0, btn.Width, btn.Height), radius))
+                {
+                    using (var bgBrush = new SolidBrush(btn.BackColor))
+                    {
+                        e.Graphics.FillPath(bgBrush, bgPath);
+                    }
+                }
+
+                // Calculate border rectangle with proper inset
+                float offset = thickness;
+                var rect = new RectangleF(
+                    offset,
+                    offset,
+                    btn.Width - (thickness * 2),
+                    btn.Height - (thickness * 2)
+                );
+
+                // Draw smooth rounded border
                 using (var pen = new Pen(color, thickness))
                 {
-                    pen.Alignment = PenAlignment.Inset;
-                    using (var path = RoundedRectPath(rect, radius))
+                    pen.Alignment = PenAlignment.Center;
+                    pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                    pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                    pen.LineJoin = System.Drawing.Drawing2D.LineJoin.Round;
+
+                    using (var path = RoundedRectPath(rect, radius - 1))
                     {
                         e.Graphics.DrawPath(pen, path);
+                    }
+                }
+
+                // Draw text centered
+                using (var format = new StringFormat())
+                {
+                    format.Alignment = StringAlignment.Center;
+                    format.LineAlignment = StringAlignment.Center;
+                    using (var textBrush = new SolidBrush(btn.ForeColor))
+                    {
+                        e.Graphics.DrawString(btn.Text, btn.Font, textBrush, btn.ClientRectangle, format);
                     }
                 }
             };
         }
 
-        private GraphicsPath RoundedRectPath(Rectangle bounds, int radius)
+        private GraphicsPath RoundedRectPath(RectangleF bounds, int radius)
         {
             var path = new GraphicsPath();
-            int diameter = radius * 2;
-            var arc = new Rectangle(bounds.Location, new Size(diameter, diameter));
 
-            // top-left arc
+            if (radius <= 0)
+            {
+                path.AddRectangle(bounds);
+                return path;
+            }
+
+            float diameter = radius * 2f;
+            var arc = new RectangleF(bounds.Location, new SizeF(diameter, diameter));
+
+            // Top-left arc
             path.AddArc(arc, 180, 90);
-            // top edge
+
+            // Top-right arc
             arc.X = bounds.Right - diameter;
             path.AddArc(arc, 270, 90);
-            // right edge
+
+            // Bottom-right arc
             arc.Y = bounds.Bottom - diameter;
             path.AddArc(arc, 0, 90);
-            // bottom edge
+
+            // Bottom-left arc
             arc.X = bounds.Left;
             path.AddArc(arc, 90, 90);
+
             path.CloseFigure();
             return path;
         }
@@ -120,9 +179,8 @@ namespace DiscordMultiTool
                     ["button5"] = "Discord Connection",
                     ["button6"] = "Exit Application",
                     ["button7"] = "Close Discord",
-                    ["button8"] = "Misc Tools",
+                    ["button8"] = "Telegram Features",
                     ["btnSettings"] = "⚙ Settings",
-                    // button9 removed
                     ["button10"] = "Change Theme",
                     ["button11"] = "Apply Discord Patch",
                     ["label3"] = "Discord Account",
@@ -155,13 +213,12 @@ namespace DiscordMultiTool
                     ["button1"] = "Discord Rich Presence",
                     ["button2"] = "Bot Discord (Python)",
                     ["button3"] = "Portale Sviluppatori",
-                    ["button4"] = "Inietta DLL",
+                    ["button4"] = "Innietta DLL",
                     ["button5"] = "Connessione Discord",
                     ["button6"] = "Esci dall'Applicazione",
                     ["button7"] = "Chiudi Discord",
-                    ["button8"] = "Strumenti Vari",
+                    ["button8"] = "Funzionalità Telegram",
                     ["btnSettings"] = "⚙ Impostazioni",
-                    // button9 removed
                     ["button10"] = "Cambia Tema",
                     ["button11"] = "Applica Patch Discord",
                     ["label3"] = "Account Discord",
@@ -179,7 +236,7 @@ namespace DiscordMultiTool
                     ["botButton1"] = "Seleziona File Bot",
                     ["botLabel1"] = "Carica il tuo Bot Discord scritto in Python.\nQuesto strumento controllerà Python, installerà le dipendenze se necessario,\ne eseguirà il tuo bot in background.",
                     ["dllButton1"] = "Seleziona File DLL",
-                    ["dllLabel1"] = "Inietta una DLL personalizzata nel processo Discord.\nCiò ti permette di modificare il comportamento di Discord.",
+                    ["dllLabel1"] = "Inietta una DLL personalizzata nel processo Discord.\nCiò ti permette di modificare il processo remoto di Discord.",
                     ["msgConnected"] = "Discord MultiTool è già connesso al tuo Client Discord\nNome Processo: {0}\nPID Processo: {1}",
                     ["msgNoDiscord"] = "Nessun processo Discord in esecuzione trovato.",
                     ["msgTelegram"] = "Le funzionalità Telegram sono attualmente in sviluppo.\nSegui su GitHub per gli ultimi aggiornamenti!",
@@ -195,7 +252,7 @@ namespace DiscordMultiTool
         private void UpdateLanguage()
         {
             var lang = translations[currentLanguage];
-            
+
             button1.Text = lang["button1"];
             button2.Text = lang["button2"];
             button3.Text = lang["button3"];
@@ -205,7 +262,7 @@ namespace DiscordMultiTool
             button7.Text = lang["button7"];
             button8.Text = lang["button8"];
             btnSettings.Text = lang["btnSettings"];
-            
+
             button10.Text = lang["button10"];
             button11.Text = lang["button11"];
             label3.Text = lang["label3"];
@@ -213,7 +270,7 @@ namespace DiscordMultiTool
             label5.Text = lang["label5"];
             checkBox1.Text = lang["checkBox1"];
             lblLanguage.Text = lang["lblLanguage"];
-            
+
             rpcButton1.Text = lang["rpcButton1"];
             rpcLabel1.Text = lang["rpcLabel1"];
             rpcLabel2.Text = lang["rpcLabel2"];
@@ -221,7 +278,7 @@ namespace DiscordMultiTool
             rpcLabel4.Text = lang["rpcLabel4"];
             rpcLabel5.Text = lang["rpcLabel5"];
             rpcLinkLabel1.Text = lang["rpcLinkLabel1"];
-            
+
             botButton1.Text = lang["botButton1"];
             botLabel1.Text = lang["botLabel1"];
             dllButton1.Text = lang["dllButton1"];
@@ -253,7 +310,6 @@ namespace DiscordMultiTool
 
             Process processo = Process.GetCurrentProcess();
             string nomeProcesso = processo.ProcessName;
-            label1.Text = $"DiscordMultiTool v1.1.0\nMasterSharp Team LLC.";
 
             string cartella = @"C:\Users\" + Environment.UserName + @"\DiscordMultiTool";
             string contenutoLog = $"DiscordMultiTool injected.\n{textBox1.Text}\n{textBox2.Text}";
@@ -269,7 +325,7 @@ namespace DiscordMultiTool
             {
                 Directory.CreateDirectory(cartella);
             }
-            
+
             UpdateLanguage();
         }
 
@@ -285,7 +341,7 @@ namespace DiscordMultiTool
                 Properties.Settings.Default.tema = "Classic";
 
             Properties.Settings.Default.Save();
-            
+
             try
             {
                 _cts?.Cancel();
@@ -310,7 +366,8 @@ namespace DiscordMultiTool
             richPresencePanel.BackColor = Color.White;
             botPanel.BackColor = Color.White;
             dllPanel.BackColor = Color.White;
-            
+            telegramPanel.BackColor = Color.White;
+
             Color textColor = Color.Black;
             button1.ForeColor = textColor;
             button2.ForeColor = textColor;
@@ -335,6 +392,14 @@ namespace DiscordMultiTool
             rpcLabel5.ForeColor = Color.Gray;
             botLabel1.ForeColor = textColor;
             dllLabel1.ForeColor = textColor;
+            if (telegramPanel != null)
+            {
+                foreach (Control c in telegramPanel.Controls)
+                {
+                    c.ForeColor = textColor;
+                    if (c is TextBox tb) tb.BackColor = Color.White;
+                }
+            }
         }
 
         private void ApplyClassicTheme()
@@ -347,7 +412,8 @@ namespace DiscordMultiTool
             richPresencePanel.BackColor = Color.FromArgb(47, 49, 54);
             botPanel.BackColor = Color.FromArgb(47, 49, 54);
             dllPanel.BackColor = Color.FromArgb(47, 49, 54);
-            
+            telegramPanel.BackColor = Color.FromArgb(47, 49, 54);
+
             Color textColor = Color.White;
             button1.ForeColor = textColor;
             button2.ForeColor = textColor;
@@ -372,6 +438,14 @@ namespace DiscordMultiTool
             rpcLabel5.ForeColor = Color.FromArgb(142, 146, 151);
             botLabel1.ForeColor = textColor;
             dllLabel1.ForeColor = textColor;
+            if (telegramPanel != null)
+            {
+                foreach (Control c in telegramPanel.Controls)
+                {
+                    c.ForeColor = textColor;
+                    if (c is TextBox tb) tb.BackColor = Color.FromArgb(60, 63, 68);
+                }
+            }
         }
 
         private async void SwitchPanel(Panel newPanel)
@@ -380,7 +454,7 @@ namespace DiscordMultiTool
 
             await FadeOut(currentPanel);
             currentPanel.Visible = false;
-            
+
             currentPanel = newPanel;
             currentPanel.Visible = true;
             await FadeIn(currentPanel);
@@ -389,11 +463,11 @@ namespace DiscordMultiTool
         private Task FadeOut(Control control)
         {
             var tcs = new TaskCompletionSource<bool>();
-            
+
             Timer timer = new Timer();
             timer.Interval = 10;
             double opacity = 1.0;
-            
+
             timer.Tick += (s, e) =>
             {
                 opacity -= 0.05;
@@ -404,19 +478,52 @@ namespace DiscordMultiTool
                     tcs.SetResult(true);
                 }
             };
-            
+
             timer.Start();
             return tcs.Task;
+        }
+
+        // Recursively apply theme colors to a control and its children
+        private void ApplyThemeToControl(Control root, bool modern)
+        {
+            Color fg = modern ? Color.Black : Color.White;
+            Color tbBack = modern ? Color.White : Color.FromArgb(60, 63, 68);
+            Color btnBack = modern ? SystemColors.Control : Color.FromArgb(70, 73, 78);
+
+            void Walk(Control c)
+            {
+                try
+                {
+                    c.ForeColor = fg;
+                    if (c is TextBox t)
+                    {
+                        t.BackColor = tbBack;
+                        t.ForeColor = fg;
+                    }
+                    if (c is Button b)
+                    {
+                        b.BackColor = btnBack;
+                        b.ForeColor = fg;
+                    }
+                }
+                catch { }
+
+                foreach (Control child in c.Controls)
+                    Walk(child);
+            }
+
+            Walk(root);
+            try { root.Refresh(); } catch { }
         }
 
         private Task FadeIn(Control control)
         {
             var tcs = new TaskCompletionSource<bool>();
-            
+
             Timer timer = new Timer();
             timer.Interval = 10;
             double opacity = 0.0;
-            
+
             timer.Tick += (s, e) =>
             {
                 opacity += 0.05;
@@ -427,7 +534,7 @@ namespace DiscordMultiTool
                     tcs.SetResult(true);
                 }
             };
-            
+
             timer.Start();
             return tcs.Task;
         }
@@ -435,21 +542,21 @@ namespace DiscordMultiTool
         private void AnimateHighlight(int targetY)
         {
             highlightTargetY = targetY;
-            
+
             if (highlightTimer != null)
             {
                 highlightTimer.Stop();
                 highlightTimer.Dispose();
             }
-            
+
             highlightTimer = new Timer();
             highlightTimer.Interval = 10;
-            
+
             highlightTimer.Tick += (s, e) =>
             {
                 int currentY = highlightPanel.Location.Y;
                 int distance = highlightTargetY - currentY;
-                
+
                 if (Math.Abs(distance) < 2)
                 {
                     highlightPanel.Location = new Point(8, highlightTargetY);
@@ -462,7 +569,7 @@ namespace DiscordMultiTool
                     highlightPanel.Location = new Point(8, newY);
                 }
             };
-            
+
             highlightTimer.Start();
         }
 
@@ -490,11 +597,34 @@ namespace DiscordMultiTool
             Process processo = Process.GetCurrentProcess();
             processo.Kill();
         }
-        
+
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(translations[currentLanguage]["msgTelegram"]);
+            try
+            {
+                if (telegramPanel.Controls.Count == 0)
+                {
+                    var f5 = new Form5();
+                    f5.TopLevel = false;
+                    f5.FormBorderStyle = FormBorderStyle.None;
+                    f5.Dock = DockStyle.Fill;
+
+                    telegramPanel.Controls.Add(f5);
+
+                    f5.BackColor = telegramPanel.BackColor;
+                    ApplyThemeToControl(f5, isModernTheme);
+
+                    f5.Show();
+                }
+
+                SwitchPanel(telegramPanel);
+                AnimateHighlight(300);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Unable to open Telegram Features: " + ex.Message);
+            }
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -503,7 +633,7 @@ namespace DiscordMultiTool
             if (ProcessoDiscord.Length > 0)
             {
                 string discordID = ProcessoDiscord[0].Id.ToString();
-                MessageBox.Show(string.Format(translations[currentLanguage]["msgConnected"], 
+                MessageBox.Show(string.Format(translations[currentLanguage]["msgConnected"],
                     ProcessoDiscord[0].ProcessName, discordID));
             }
             else
@@ -741,7 +871,7 @@ namespace DiscordMultiTool
         private void StartPythonScript(string scriptPath)
         {
             string pythonExe = "python";
-            
+
             ProcessStartInfo psi = new ProcessStartInfo
             {
                 FileName = pythonExe,
@@ -799,7 +929,7 @@ namespace DiscordMultiTool
                     WriteProcessMemory(hProcess, addr, System.Text.Encoding.Default.GetBytes(dllPath), (uint)dllPath.Length + 1, out _);
                     IntPtr loadLibraryAddr = GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
                     CreateRemoteThread(hProcess, IntPtr.Zero, 0, loadLibraryAddr, addr, 0, out _);
-                    
+
                     MessageBox.Show("DLL injected successfully!");
                 }
             });
@@ -808,5 +938,6 @@ namespace DiscordMultiTool
             t.Start();
             t.Join();
         }
+
     }
 }
