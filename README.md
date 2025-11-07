@@ -22,7 +22,9 @@ L'applicazione offre un'interfaccia grafica intuitiva con diversi moduli special
 ## 🚀 Futuri Aggiornamenti
 
 Sono già in sviluppo aggiornamenti per questo software, tra cui:
-- **Premium Telegram Features** - Funzionalità avanzate per Telegram
+- Versione per Linux Web and Server
+- Nuova icona
+- Menù UWP per aprire il tutto anche da una finestra trasportabile
 - Nuovi moduli di automazione
 - Ulteriori personalizzazioni e patch
 
@@ -45,3 +47,4 @@ Grazie del supporto per questo programma! Se desiderate una nuova versione o ave
 ---
 
 📌 **Repository:** [https://github.com/CodeSharp3210](https://github.com/CodeSharp3210)
+
