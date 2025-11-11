@@ -23,7 +23,6 @@ L'applicazione offre un'interfaccia grafica intuitiva con diversi moduli special
 
 Sono già in sviluppo aggiornamenti per questo software, tra cui:
 - Versione per Linux Web and Server
-- Nuova icona
 - Menù UWP per aprire il tutto anche da una finestra trasportabile
 - Nuovi moduli di automazione
 - Ulteriori personalizzazioni e patch
@@ -41,10 +40,11 @@ Grazie del supporto per questo programma! Se desiderate una nuova versione o ave
 ## 👥 Crediti dei membri Master Sharp Team LLC.
 
 - **Franciplay58** - Sviluppatore principale della GUI e dell'integrazione funzioni/UI
-- **MasterSharp** - Developer secondario, traduttore e sviluppatore delle funzioni 
+- **MasterSharp** - Developer del resto, traduttore e sviluppatore delle funzioni 
 - **itelcan3** - Traduzione aggiuntiva
 
 ---
 
 📌 **Repository:** [https://github.com/CodeSharp3210](https://github.com/CodeSharp3210)
+
 
