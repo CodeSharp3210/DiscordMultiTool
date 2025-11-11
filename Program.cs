@@ -17,36 +17,58 @@ namespace DiscordMultiTool
             Console.WriteLine("Loading...");
             await Task.Delay(2000); // puoi ridurre il delay se vuoi
 
+            var discordClients = Process.GetProcessesByName("Discord");
+            var telegramClients = Process.GetProcessesByName("Telegram");
+
+            bool discordOpen = discordClients.Length > 0;
+            bool telegramOpen = telegramClients.Length > 0;
+
             while (true)
             {
-                var discordClients = Process.GetProcessesByName("Discord");
 
-                if (discordClients.Length == 0)
+                if (!discordOpen && !telegramOpen)
                 {
-                    Console.WriteLine("No Discord session found...");
+                    Console.WriteLine("No Discord or Telegram Session found.");
                     Console.WriteLine("Press ENTER to retry...");
-                    Console.ReadLine();  // aspetta input e ripete
+                    Console.ReadLine();
                     continue;
                 }
 
-                foreach (Process discord in discordClients)
+                // Messaggio principale con dettagli
+                if (discordOpen && telegramOpen)
                 {
-                    Console.WriteLine("Process found:");
-                    Console.WriteLine($"Process Name: Discord.exe | PID: {discord.Id}");
-                    Console.WriteLine("Press ENTER to continue with the selected Discord client...");
-                    Console.ReadLine();
+                    Console.WriteLine("Discord and Telegram Processes found:");
+                    foreach (Process d in discordClients)
+                        Console.WriteLine($"Discord | Name: {d.ProcessName} | PID: {d.Id}");
+                    foreach (Process t in telegramClients)
+                        Console.WriteLine($"Telegram | Name: {t.ProcessName} | PID: {t.Id}");
+                }
+                else if (discordOpen)
+                {
+                    Console.WriteLine("Discord Process found:");
+                    foreach (Process d in discordClients)
+                        Console.WriteLine($"Name: {d.ProcessName} | PID: {d.Id}");
+                }
+                else if (telegramOpen)
+                {
+                    Console.WriteLine("Telegram Process found:");
+                    foreach (Process t in telegramClients)
+                        Console.WriteLine($"Name: {t.ProcessName} | PID: {t.Id}");
+                }
 
-                    // Chiudi la console
-                    FreeConsole();
+                Console.WriteLine("\nPress ENTER to run program...");
+                Console.ReadLine();
+
+                // Chiudi la console
+                FreeConsole();
 
                     // Avvia la UI
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new Form1());
 
-                    return; // esce dal metodo Main
+                    return;
                 }
             }
         }
     }
-}

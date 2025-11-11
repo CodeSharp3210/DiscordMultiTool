@@ -260,7 +260,7 @@ namespace DiscordMultiTool
             label1.Name = "label1";
             label1.Size = new Size(256, 60);
             label1.TabIndex = 9;
-            label1.Text = "DiscordMultiTool V2.1.0\r\nMasterSharp Team LLC.";
+            label1.Text = "DiscordMultiTool V2.5.0\r\nMasterSharp Team LLC.";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // contentPanel
@@ -324,11 +324,10 @@ namespace DiscordMultiTool
             checkBox1.AutoSize = true;
             checkBox1.Font = new Font("Segoe UI", 10F);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(560, 248);
+            checkBox1.Location = new Point(560, 255);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(143, 23);
+            checkBox1.Size = new Size(15, 14);
             checkBox1.TabIndex = 8;
-            checkBox1.Text = "Auto Save Settings";
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += CheckBox1_CheckedChanged;
             // 
@@ -345,10 +344,12 @@ namespace DiscordMultiTool
             // 
             // textBox2
             // 
+            textBox2.BackColor = Color.White;
+            textBox2.BorderStyle = BorderStyle.None;
             textBox2.Font = new Font("Segoe UI", 11F);
-            textBox2.Location = new Point(560, 150);
+            textBox2.Location = new Point(560, 154);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(300, 27);
+            textBox2.Size = new Size(300, 20);
             textBox2.TabIndex = 6;
             // 
             // label4
@@ -375,10 +376,12 @@ namespace DiscordMultiTool
             // 
             // textBox1
             // 
+            textBox1.BackColor = Color.White;
+            textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 11F);
-            textBox1.Location = new Point(560, 57);
+            textBox1.Location = new Point(560, 61);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(300, 27);
+            textBox1.Size = new Size(300, 20);
             textBox1.TabIndex = 3;
             // 
             // button11
@@ -392,7 +395,7 @@ namespace DiscordMultiTool
             button11.Name = "button11";
             button11.Size = new Size(280, 45);
             button11.TabIndex = 2;
-            button11.Text = "Apply Discord Patch";
+            button11.Text = "Color GUI";
             button11.UseVisualStyleBackColor = false;
             button11.Click += Button11_Click;
             // 
@@ -662,7 +665,7 @@ namespace DiscordMultiTool
             MaximizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Discord MultiTool";
+            Text = "DiscordMultiTool";
             Load += Form1_Load;
             leftPanel.ResumeLayout(false);
             contentPanel.ResumeLayout(false);
@@ -703,7 +706,6 @@ namespace DiscordMultiTool
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         
@@ -729,5 +731,6 @@ namespace DiscordMultiTool
         private System.Windows.Forms.Panel dllPanel;
         private System.Windows.Forms.Button dllButton1;
         private System.Windows.Forms.Label dllLabel1;
+        public Button button11;
     }
 }

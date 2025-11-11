@@ -182,11 +182,10 @@ namespace DiscordMultiTool
                     ["button8"] = "Telegram Features",
                     ["btnSettings"] = "⚙ Settings",
                     ["button10"] = "Change Theme",
-                    ["button11"] = "Apply Discord Patch",
+                    ["button11"] = "Color GUI",
                     ["label3"] = "Discord Account",
                     ["label4"] = "Target Server",
                     ["label5"] = "Save Settings",
-                    ["checkBox1"] = "Auto Save Settings",
                     ["lblLanguage"] = "Language",
                     ["rpcButton1"] = "Load Discord RPC",
                     ["rpcLabel1"] = "Application ID",
@@ -220,11 +219,10 @@ namespace DiscordMultiTool
                     ["button8"] = "Funzionalità Telegram",
                     ["btnSettings"] = "⚙ Impostazioni",
                     ["button10"] = "Cambia Tema",
-                    ["button11"] = "Applica Patch Discord",
+                    ["button11"] = "Colore GUI",
                     ["label3"] = "Account Discord",
-                    ["label4"] = "Server di Destinazione",
+                    ["label4"] = "Server Target",
                     ["label5"] = "Salva Impostazioni",
-                    ["checkBox1"] = "Salvataggio Automatico",
                     ["lblLanguage"] = "Lingua",
                     ["rpcButton1"] = "Carica Discord RPC",
                     ["rpcLabel1"] = "ID Applicazione",
@@ -268,9 +266,7 @@ namespace DiscordMultiTool
             label3.Text = lang["label3"];
             label4.Text = lang["label4"];
             label5.Text = lang["label5"];
-            checkBox1.Text = lang["checkBox1"];
             lblLanguage.Text = lang["lblLanguage"];
-
             rpcButton1.Text = lang["rpcButton1"];
             rpcLabel1.Text = lang["rpcLabel1"];
             rpcLabel2.Text = lang["rpcLabel2"];
@@ -278,7 +274,6 @@ namespace DiscordMultiTool
             rpcLabel4.Text = lang["rpcLabel4"];
             rpcLabel5.Text = lang["rpcLabel5"];
             rpcLinkLabel1.Text = lang["rpcLinkLabel1"];
-
             botButton1.Text = lang["botButton1"];
             botLabel1.Text = lang["botLabel1"];
             dllButton1.Text = lang["dllButton1"];
@@ -287,6 +282,7 @@ namespace DiscordMultiTool
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             checkBox1.Checked = (Properties.Settings.Default.checkbox == "True");
 
             if (checkBox1.Checked)
@@ -311,7 +307,7 @@ namespace DiscordMultiTool
             Process processo = Process.GetCurrentProcess();
             string nomeProcesso = processo.ProcessName;
 
-            string cartella = @"C:\Users\" + Environment.UserName + @"\DiscordMultiTool";
+            string cartella = @"C:\Users\" + Environment.UserName + @"\.dmt";
             string contenutoLog = $"DiscordMultiTool injected.\n{textBox1.Text}\n{textBox2.Text}";
 
             if (Directory.Exists(cartella))
@@ -335,12 +331,7 @@ namespace DiscordMultiTool
             Properties.Settings.Default.textbox1 = textBox1.Text;
             Properties.Settings.Default.textbox2 = textBox2.Text;
 
-            if (button10.Text.Contains("Classic"))
-                Properties.Settings.Default.tema = "Modern";
-            else
-                Properties.Settings.Default.tema = "Classic";
-
-            Properties.Settings.Default.Save();
+            
 
             try
             {
@@ -392,14 +383,7 @@ namespace DiscordMultiTool
             rpcLabel5.ForeColor = Color.Gray;
             botLabel1.ForeColor = textColor;
             dllLabel1.ForeColor = textColor;
-            if (telegramPanel != null)
-            {
-                foreach (Control c in telegramPanel.Controls)
-                {
-                    c.ForeColor = textColor;
-                    if (c is TextBox tb) tb.BackColor = Color.White;
-                }
-            }
+            telegramPanel.BackColor = Color.FromArgb(47, 49, 54);
         }
 
         private void ApplyClassicTheme()
@@ -438,15 +422,9 @@ namespace DiscordMultiTool
             rpcLabel5.ForeColor = Color.FromArgb(142, 146, 151);
             botLabel1.ForeColor = textColor;
             dllLabel1.ForeColor = textColor;
-            if (telegramPanel != null)
-            {
-                foreach (Control c in telegramPanel.Controls)
-                {
-                    c.ForeColor = textColor;
-                    if (c is TextBox tb) tb.BackColor = Color.FromArgb(60, 63, 68);
-                }
-            }
         }
+
+
 
         private async void SwitchPanel(Panel newPanel)
         {
@@ -605,16 +583,14 @@ namespace DiscordMultiTool
             {
                 if (telegramPanel.Controls.Count == 0)
                 {
-                    var f5 = new Form5();
+                    Form f5 = new Form5();
                     f5.TopLevel = false;
                     f5.FormBorderStyle = FormBorderStyle.None;
                     f5.Dock = DockStyle.Fill;
 
                     telegramPanel.Controls.Add(f5);
 
-                    f5.BackColor = telegramPanel.BackColor;
                     ApplyThemeToControl(f5, isModernTheme);
-
                     f5.Show();
                 }
 
@@ -644,18 +620,25 @@ namespace DiscordMultiTool
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            try
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                var psi = new ProcessStartInfo
-                {
-                    FileName = "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                    UseShellExecute = true
-                };
-                Process.Start(psi);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Unable to open link: " + ex.Message);
+                button1.ForeColor = colorDialog.Color;
+                button2.ForeColor = colorDialog.Color;
+                button3.ForeColor = colorDialog.Color;
+                button4.ForeColor = colorDialog.Color;
+                button5.ForeColor = colorDialog.Color;
+                button8.ForeColor = colorDialog.Color;
+                btnSettings.ForeColor = colorDialog.Color;
+                label1.ForeColor = colorDialog.Color;
+                label3.ForeColor = colorDialog.Color;
+                label4.ForeColor = colorDialog.Color;
+                label5.ForeColor = colorDialog.Color;
+                lblLanguage.ForeColor = colorDialog.Color;
+                checkBox1.ForeColor = colorDialog.Color;
+                button10.ForeColor = colorDialog.Color;
+                button11.ForeColor = colorDialog.Color;
+
             }
         }
 

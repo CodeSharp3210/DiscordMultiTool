@@ -17,6 +17,7 @@
     <Version>1.0.1</Version>
     <Authors>MasterSharp Team LLC.</Authors>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>

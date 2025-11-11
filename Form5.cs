@@ -1,32 +1,33 @@
 
 using System;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.IO;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace DiscordMultiTool
 {
     public partial class Form5 : Form
     {
+
+
         public Form5()
         {
             InitializeComponent();
-            // Load saved settings into UI
-            try
-            {
-                tokenTextBox.Text = Properties.Settings.Default.telegramBotToken ?? string.Empty;
-                chatIdTextBox.Text = Properties.Settings.Default.telegramChatId ?? string.Empty;
-                messageTextBox.Text = Properties.Settings.Default.telegramMessage ?? string.Empty;
-            }
-            catch { }
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
+
+
+
             string scriptPath = null;
 
             // Apro il file dialog per selezionare il file Python
@@ -378,20 +379,12 @@ namespace DiscordMultiTool
             }
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void Form5_Load(object sender, EventArgs e)
         {
-            try
-            {
-                Properties.Settings.Default.telegramBotToken = tokenTextBox.Text ?? string.Empty;
-                Properties.Settings.Default.telegramChatId = chatIdTextBox.Text ?? string.Empty;
-                Properties.Settings.Default.telegramMessage = messageTextBox.Text ?? string.Empty;
-                Properties.Settings.Default.Save();
-                MessageBox.Show("Telegram settings saved.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to save settings: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.BackColor = Color.FromArgb(47, 49, 54);
         }
+
     }
 }
+
+
