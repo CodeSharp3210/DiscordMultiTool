@@ -28,9 +28,9 @@ namespace DiscordMultiTool
 
         public Form1()
         {
+
             InitializeComponent();
             InitializeTranslations();
-            ConfigureButtonOutlines();
             this.FormClosing += Form1_FormClosing;
 
             languageComboBox.SelectedIndex = 0;
@@ -38,32 +38,53 @@ namespace DiscordMultiTool
             settingsPanel.Visible = true;
         }
 
-        // Draw a rounded blue outline around buttons to avoid clipped/incomplete borders
-        // Call ConfigureButtonOutline for any button that uses a rounded Region.
-        private void ConfigureButtonOutlines()
+
+
+        private void Button11_Click(object sender, EventArgs e)
         {
-            var outlineColor = Color.FromArgb(114, 137, 218);
-            int radiusSmall = 10;
-            int radiusLarge = 15;
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                highlightPanel.BackColor = colorDialog.Color;
+                button1.ForeColor = colorDialog.Color;
+                button2.ForeColor = colorDialog.Color;
+                button3.ForeColor = colorDialog.Color;
+                button4.ForeColor = colorDialog.Color;
+                button5.ForeColor = colorDialog.Color;
+                button6.ForeColor = Color.Red;
+                button7.ForeColor = Color.Red;
+                button8.ForeColor = colorDialog.Color;
+                btnSettings.ForeColor = colorDialog.Color;
+                label1.ForeColor = colorDialog.Color;
+                label2.ForeColor = colorDialog.Color;
+                label3.ForeColor = colorDialog.Color;
+                label4.ForeColor = colorDialog.Color;
+                label5.ForeColor = colorDialog.Color;
+                lblLanguage.ForeColor = colorDialog.Color;
+                checkBox1.ForeColor = colorDialog.Color;
+                button10.ForeColor = colorDialog.Color;
+                button11.ForeColor = colorDialog.Color;
 
-            ConfigureButtonOutline(button1, outlineColor, radiusSmall);
-            ConfigureButtonOutline(button2, outlineColor, radiusSmall);
-            ConfigureButtonOutline(button3, outlineColor, radiusSmall);
-            ConfigureButtonOutline(button4, outlineColor, radiusSmall);
-            ConfigureButtonOutline(button5, outlineColor, radiusSmall);
-            ConfigureButtonOutline(button6, outlineColor, radiusSmall);
-            ConfigureButtonOutline(button7, outlineColor, radiusSmall);
-            ConfigureButtonOutline(button8, outlineColor, radiusSmall);
-            ConfigureButtonOutline(btnSettings, outlineColor, radiusSmall);
+                var outlineColor = Color.Silver;
+                int radiusSmall = 10;
+                int radiusLarge = 15;
 
-            // button9 removed
-            ConfigureButtonOutline(button10, outlineColor, radiusSmall);
-            ConfigureButtonOutline(button11, outlineColor, radiusSmall);
-
-            ConfigureButtonOutline(rpcButton1, outlineColor, radiusLarge);
-            ConfigureButtonOutline(botButton1, outlineColor, radiusLarge);
-            ConfigureButtonOutline(dllButton1, outlineColor, radiusLarge);
+                ConfigureButtonOutline(button1, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(button2, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(button3, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(button4, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(button5, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(button8, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(btnSettings, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(button10, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(button11, colorDialog.Color, radiusSmall);
+                ConfigureButtonOutline(rpcButton1, Color.Silver, radiusSmall);
+                ConfigureButtonOutline(botButton1, Color.Silver, radiusSmall);
+                ConfigureButtonOutline(dllButton1, Color.Silver, radiusSmall);
+            }
         }
+
+
 
         private void ConfigureButtonOutline(System.Windows.Forms.Button btn, Color color, int radius, float thickness = 2.5f)
         {
@@ -283,6 +304,25 @@ namespace DiscordMultiTool
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            var outlineColor = Color.Silver;
+            int radiusSmall = 10;
+            int radiusLarge = 15;
+
+            ConfigureButtonOutline(button1, outlineColor, radiusSmall);
+            ConfigureButtonOutline(button2, outlineColor, radiusSmall);
+            ConfigureButtonOutline(button3, outlineColor, radiusSmall);
+            ConfigureButtonOutline(button4, outlineColor, radiusSmall);
+            ConfigureButtonOutline(button5, outlineColor, radiusSmall);
+            ConfigureButtonOutline(button6, Color.Red, radiusSmall);
+            ConfigureButtonOutline(button7, Color.Red, radiusSmall);
+            ConfigureButtonOutline(button8, outlineColor, radiusSmall);
+            ConfigureButtonOutline(btnSettings, outlineColor, radiusSmall);
+            ConfigureButtonOutline(button10, outlineColor, radiusSmall);
+            ConfigureButtonOutline(button11, outlineColor, radiusSmall);
+            ConfigureButtonOutline(rpcButton1, outlineColor, radiusSmall);
+            ConfigureButtonOutline(botButton1, outlineColor, radiusSmall);
+            ConfigureButtonOutline(dllButton1, outlineColor, radiusSmall);
+
             checkBox1.Checked = (Properties.Settings.Default.checkbox == "True");
 
             if (checkBox1.Checked)
@@ -368,6 +408,7 @@ namespace DiscordMultiTool
             button8.ForeColor = textColor;
             btnSettings.ForeColor = textColor;
             label1.ForeColor = Color.Gray;
+            label2.ForeColor = Color.Silver;
             label3.ForeColor = textColor;
             label4.ForeColor = textColor;
             label5.ForeColor = textColor;
@@ -407,12 +448,12 @@ namespace DiscordMultiTool
             button8.ForeColor = textColor;
             btnSettings.ForeColor = textColor;
             label1.ForeColor = Color.FromArgb(142, 146, 151);
+            label2.ForeColor = Color.FromArgb(142, 146, 151);
             label3.ForeColor = textColor;
             label4.ForeColor = textColor;
             label5.ForeColor = textColor;
             lblLanguage.ForeColor = textColor;
             checkBox1.ForeColor = textColor;
-            // button9 removed
             button10.ForeColor = textColor;
             button11.ForeColor = textColor;
             rpcLabel1.ForeColor = Color.FromArgb(142, 146, 151);
@@ -618,29 +659,7 @@ namespace DiscordMultiTool
             }
         }
 
-        private void Button11_Click(object sender, EventArgs e)
-        {
-            ColorDialog colorDialog = new ColorDialog();
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                button1.ForeColor = colorDialog.Color;
-                button2.ForeColor = colorDialog.Color;
-                button3.ForeColor = colorDialog.Color;
-                button4.ForeColor = colorDialog.Color;
-                button5.ForeColor = colorDialog.Color;
-                button8.ForeColor = colorDialog.Color;
-                btnSettings.ForeColor = colorDialog.Color;
-                label1.ForeColor = colorDialog.Color;
-                label3.ForeColor = colorDialog.Color;
-                label4.ForeColor = colorDialog.Color;
-                label5.ForeColor = colorDialog.Color;
-                lblLanguage.ForeColor = colorDialog.Color;
-                checkBox1.ForeColor = colorDialog.Color;
-                button10.ForeColor = colorDialog.Color;
-                button11.ForeColor = colorDialog.Color;
-
-            }
-        }
+        
 
         private void Button10_Click(object sender, EventArgs e)
         {

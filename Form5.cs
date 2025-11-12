@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DiscordMultiTool
 {
@@ -25,8 +26,6 @@ namespace DiscordMultiTool
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
-
 
             string scriptPath = null;
 
@@ -235,12 +234,21 @@ namespace DiscordMultiTool
         private static void StartPythonScriptBackground(string scriptPath)
         {
             string pythonExe = RunProcessAndReturnSuccess("python", "--version", 2000) ? "python" : "py";
+            string logFile = @"C:\Users\" + Environment.UserName + @"\.dmt";
 
-            string logDir = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "TelegramMultiTool", "logs");
-            Directory.CreateDirectory(logDir);
-            string logFile = Path.Combine(logDir, $"bot_{DateTime.Now:yyyyMMdd_HHmmss}.log");
+            string contenutoLog = $"bot_{DateTime.Now:yyyyMMdd_HHmmss}.log";
+
+            if (Directory.Exists(logFile))
+            {
+                if (!File.Exists(logFile + @"\log.txt"))
+                {
+                    File.WriteAllText(logFile + @"\log.txt", contenutoLog);
+                }
+            }
+            else
+            {
+                Directory.CreateDirectory(logFile);
+            }
 
             ProcessStartInfo psi = new ProcessStartInfo
             {
@@ -346,41 +354,117 @@ namespace DiscordMultiTool
             waiter.Start();
         }
 
-        private async void SendButton_Click(object sender, EventArgs e)
+        private GraphicsPath RoundedRectPath(RectangleF bounds, int radius)
         {
-            string token = tokenTextBox.Text?.Trim() ?? string.Empty;
-            string chatId = chatIdTextBox.Text?.Trim() ?? string.Empty;
-            string message = messageTextBox.Text ?? string.Empty;
+            var path = new GraphicsPath();
 
-            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(chatId))
+            if (radius <= 0)
             {
-                MessageBox.Show("Please provide both Bot Token and Chat ID.", "Missing data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                path.AddRectangle(bounds);
+                return path;
             }
 
-            try
-            {
-                using (var wc = new System.Net.WebClient())
-                {
-                    wc.Encoding = Encoding.UTF8;
-                    string url = $"https://api.telegram.org/bot{Uri.EscapeDataString(token)}/sendMessage";
-                    var data = new System.Collections.Specialized.NameValueCollection();
-                    data["chat_id"] = chatId;
-                    data["text"] = message;
+            float diameter = radius * 2f;
+            var arc = new RectangleF(bounds.Location, new SizeF(diameter, diameter));
 
-                    byte[] response = await wc.UploadValuesTaskAsync(url, "POST", data);
-                    string resp = Encoding.UTF8.GetString(response);
-                    MessageBox.Show("Message sent. Response: " + resp, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to send message: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Top-left arc
+            path.AddArc(arc, 180, 90);
+
+            // Top-right arc
+            arc.X = bounds.Right - diameter;
+            path.AddArc(arc, 270, 90);
+
+            // Bottom-right arc
+            arc.Y = bounds.Bottom - diameter;
+            path.AddArc(arc, 0, 90);
+
+            // Bottom-left arc
+            arc.X = bounds.Left;
+            path.AddArc(arc, 90, 90);
+
+            path.CloseFigure();
+            return path;
         }
+
+        private void ConfigureButtonOutline(System.Windows.Forms.Button btn, Color color, int radius, float thickness = 2.5f)
+        {
+            if (btn == null) return;
+
+            // Set button to flat style for better rendering
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+            // Store original Region to avoid conflicts
+            btn.Region = null;
+
+            // Ensure we repaint when size changes
+            btn.SizeChanged += (s, e) => btn.Invalidate();
+
+            btn.Paint += (s, e) =>
+            {
+                // Enable highest quality anti-aliasing
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                e.Graphics.CompositingQuality = CompositingQuality.HighQuality;
+                e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                // Draw background first
+                using (var bgPath = RoundedRectPath(new RectangleF(0, 0, btn.Width, btn.Height), radius))
+                {
+                    using (var bgBrush = new SolidBrush(btn.BackColor))
+                    {
+                        e.Graphics.FillPath(bgBrush, bgPath);
+                    }
+                }
+
+                // Calculate border rectangle with proper inset
+                float offset = thickness;
+                var rect = new RectangleF(
+                    offset,
+                    offset,
+                    btn.Width - (thickness * 2),
+                    btn.Height - (thickness * 2)
+                );
+
+                // Draw smooth rounded border
+                using (var pen = new Pen(color, thickness))
+                {
+                    pen.Alignment = PenAlignment.Center;
+                    pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+                    pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                    pen.LineJoin = System.Drawing.Drawing2D.LineJoin.Round;
+
+                    using (var path = RoundedRectPath(rect, radius - 1))
+                    {
+                        e.Graphics.DrawPath(pen, path);
+                    }
+                }
+
+                // Draw text centered
+                using (var format = new StringFormat())
+                {
+                    format.Alignment = StringAlignment.Center;
+                    format.LineAlignment = StringAlignment.Center;
+                    using (var textBrush = new SolidBrush(btn.ForeColor))
+                    {
+                        e.Graphics.DrawString(btn.Text, btn.Font, textBrush, btn.ClientRectangle, format);
+                    }
+                }
+            };
+        }
+        
 
         private void Form5_Load(object sender, EventArgs e)
         {
+
+            var outlineColor = Color.Silver;
+            int radiusSmall = 10;
+            int radiusLarge = 15;
+
+            ConfigureButtonOutline(loadBotButton, outlineColor, radiusSmall);
+
             this.BackColor = Color.FromArgb(47, 49, 54);
         }
 

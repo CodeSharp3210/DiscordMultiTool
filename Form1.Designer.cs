@@ -19,6 +19,7 @@ namespace DiscordMultiTool
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             leftPanel = new Panel();
+            pictureBox1 = new PictureBox();
             highlightPanel = new Panel();
             button1 = new Button();
             button2 = new Button();
@@ -32,6 +33,7 @@ namespace DiscordMultiTool
             label1 = new Label();
             contentPanel = new Panel();
             settingsPanel = new Panel();
+            label2 = new Label();
             languageComboBox = new ComboBox();
             lblLanguage = new Label();
             checkBox1 = new CheckBox();
@@ -64,6 +66,7 @@ namespace DiscordMultiTool
             dllButton1 = new Button();
             button9 = new Button();
             leftPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             contentPanel.SuspendLayout();
             settingsPanel.SuspendLayout();
             richPresencePanel.SuspendLayout();
@@ -74,6 +77,7 @@ namespace DiscordMultiTool
             // leftPanel
             // 
             leftPanel.BackColor = Color.FromArgb(32, 34, 37);
+            leftPanel.Controls.Add(pictureBox1);
             leftPanel.Controls.Add(highlightPanel);
             leftPanel.Controls.Add(button1);
             leftPanel.Controls.Add(button2);
@@ -91,9 +95,19 @@ namespace DiscordMultiTool
             leftPanel.Size = new Size(280, 720);
             leftPanel.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(12, 643);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(65, 65);
+            pictureBox1.TabIndex = 101;
+            pictureBox1.TabStop = false;
+            // 
             // highlightPanel
             // 
-            highlightPanel.BackColor = Color.FromArgb(114, 137, 218);
+            highlightPanel.BackColor = Color.Silver;
             highlightPanel.Location = new Point(8, 496);
             highlightPanel.Name = "highlightPanel";
             highlightPanel.Size = new Size(4, 50);
@@ -207,7 +221,7 @@ namespace DiscordMultiTool
             button7.FlatAppearance.BorderSize = 0;
             button7.FlatStyle = FlatStyle.Flat;
             button7.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            button7.ForeColor = Color.FromArgb(240, 71, 71);
+            button7.ForeColor = Color.Red;
             button7.Location = new Point(12, 370);
             button7.Name = "button7";
             button7.Padding = new Padding(15, 0, 0, 0);
@@ -224,7 +238,7 @@ namespace DiscordMultiTool
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            button6.ForeColor = Color.FromArgb(240, 71, 71);
+            button6.ForeColor = Color.Red;
             button6.Location = new Point(12, 426);
             button6.Name = "button6";
             button6.Padding = new Padding(15, 0, 0, 0);
@@ -247,7 +261,7 @@ namespace DiscordMultiTool
             btnSettings.Padding = new Padding(15, 0, 0, 0);
             btnSettings.Size = new Size(256, 50);
             btnSettings.TabIndex = 8;
-            btnSettings.Text = "⚙ Settings";
+            btnSettings.Text = "Home and Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
             btnSettings.UseVisualStyleBackColor = false;
             btnSettings.Click += BtnSettings_Click;
@@ -256,9 +270,9 @@ namespace DiscordMultiTool
             // 
             label1.Font = new Font("Segoe UI", 9F);
             label1.ForeColor = Color.FromArgb(142, 146, 151);
-            label1.Location = new Point(12, 650);
+            label1.Location = new Point(83, 648);
             label1.Name = "label1";
-            label1.Size = new Size(256, 60);
+            label1.Size = new Size(159, 60);
             label1.TabIndex = 9;
             label1.Text = "DiscordMultiTool V2.5.0\r\nMasterSharp Team LLC.";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -280,6 +294,7 @@ namespace DiscordMultiTool
             // settingsPanel
             // 
             settingsPanel.BackColor = Color.FromArgb(47, 49, 54);
+            settingsPanel.Controls.Add(label2);
             settingsPanel.Controls.Add(languageComboBox);
             settingsPanel.Controls.Add(lblLanguage);
             settingsPanel.Controls.Add(checkBox1);
@@ -295,6 +310,17 @@ namespace DiscordMultiTool
             settingsPanel.Name = "settingsPanel";
             settingsPanel.Size = new Size(920, 720);
             settingsPanel.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Silver;
+            label2.Location = new Point(726, 681);
+            label2.Name = "label2";
+            label2.Size = new Size(182, 30);
+            label2.TabIndex = 11;
+            label2.Text = "DiscordMultiTool";
             // 
             // languageComboBox
             // 
@@ -668,6 +694,7 @@ namespace DiscordMultiTool
             Text = "DiscordMultiTool";
             Load += Form1_Load;
             leftPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             contentPanel.ResumeLayout(false);
             settingsPanel.ResumeLayout(false);
             settingsPanel.PerformLayout();
@@ -732,5 +759,7 @@ namespace DiscordMultiTool
         private System.Windows.Forms.Button dllButton1;
         private System.Windows.Forms.Label dllLabel1;
         public Button button11;
+        private PictureBox pictureBox1;
+        private Label label2;
     }
 }
