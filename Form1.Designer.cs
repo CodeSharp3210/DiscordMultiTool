@@ -274,7 +274,7 @@ namespace DiscordMultiTool
             label1.Name = "label1";
             label1.Size = new Size(159, 60);
             label1.TabIndex = 9;
-            label1.Text = "DiscordMultiTool V2.5.0\r\nMasterSharp Team LLC.";
+            label1.Text = "DiscordMultiTool V2.5.1\r\nMasterSharp Team LLC.";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // contentPanel

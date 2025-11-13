@@ -17,14 +17,15 @@ namespace DiscordMultiTool
             Console.WriteLine("Loading...");
             await Task.Delay(2000); // puoi ridurre il delay se vuoi
 
-            var discordClients = Process.GetProcessesByName("Discord");
-            var telegramClients = Process.GetProcessesByName("Telegram");
-
-            bool discordOpen = discordClients.Length > 0;
-            bool telegramOpen = telegramClients.Length > 0;
+            
 
             while (true)
             {
+                var discordClients = Process.GetProcessesByName("Discord");
+                var telegramClients = Process.GetProcessesByName("Telegram");
+
+                bool discordOpen = discordClients.Length > 0;
+                bool telegramOpen = telegramClients.Length > 0;
 
                 if (!discordOpen && !telegramOpen)
                 {
