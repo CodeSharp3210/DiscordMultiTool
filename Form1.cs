@@ -199,7 +199,7 @@ namespace DiscordMultiTool
                     ["button4"] = "Inject DLL",
                     ["button5"] = "Discord Connection",
                     ["button6"] = "Exit Application",
-                    ["button7"] = "Close Discord",
+                    ["button7"] = "Secuity Options",
                     ["button8"] = "Telegram Features",
                     ["btnSettings"] = "Home Page",
                     ["button10"] = "Change Theme",
@@ -235,8 +235,8 @@ namespace DiscordMultiTool
                     ["button3"] = "Portale Sviluppatori",
                     ["button4"] = "Innietta DLL",
                     ["button5"] = "Connessione Discord",
-                    ["button6"] = "Esci dall'Applicazione",
-                    ["button7"] = "Chiudi Discord",
+                    ["button6"] = "Chiudi App",
+                    ["button7"] = "Opzioni avanzate",
                     ["button8"] = "Funzionalità Telegram",
                     ["btnSettings"] = "Home Page",
                     ["button10"] = "Cambia Tema",
@@ -342,24 +342,6 @@ namespace DiscordMultiTool
                     button10.Text = translations[currentLanguage]["button10"] + ": Modern";
                     ApplyClassicTheme();
                 }
-            }
-
-            Process processo = Process.GetCurrentProcess();
-            string nomeProcesso = processo.ProcessName;
-
-            string cartella = @"C:\Users\" + Environment.UserName + @"\.dmt";
-            string contenutoLog = $"DiscordMultiTool injected.\n{textBox1.Text}\n{textBox2.Text}";
-
-            if (Directory.Exists(cartella))
-            {
-                if (!File.Exists(cartella + @"\log.txt"))
-                {
-                    File.WriteAllText(cartella + @"\log.txt", contenutoLog);
-                }
-            }
-            else
-            {
-                Directory.CreateDirectory(cartella);
             }
 
             UpdateLanguage();
@@ -600,15 +582,8 @@ namespace DiscordMultiTool
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            Process[] ProcessoDiscord = Process.GetProcessesByName("Discord");
-            try
-            {
-                ProcessoDiscord[0].Kill();
-            }
-            catch (Exception)
-            {
-                ;
-            }
+            Form6 frm6 = new Form6();
+            frm6.ShowDialog();
         }
 
         private void Button6_Click(object sender, EventArgs e)

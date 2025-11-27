@@ -227,7 +227,7 @@ namespace DiscordMultiTool
             button7.Padding = new Padding(15, 0, 0, 0);
             button7.Size = new Size(256, 50);
             button7.TabIndex = 6;
-            button7.Text = "Close Discord";
+            button7.Text = "Security Options";
             button7.TextAlign = ContentAlignment.MiddleLeft;
             button7.UseVisualStyleBackColor = false;
             button7.Click += Button7_Click;
