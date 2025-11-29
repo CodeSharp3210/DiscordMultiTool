@@ -33,6 +33,13 @@ namespace DiscordMultiTool
             label1 = new Label();
             contentPanel = new Panel();
             settingsPanel = new Panel();
+            label7 = new Label();
+            label6 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            pictureBox2 = new PictureBox();
             label2 = new Label();
             languageComboBox = new ComboBox();
             lblLanguage = new Label();
@@ -69,6 +76,7 @@ namespace DiscordMultiTool
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             contentPanel.SuspendLayout();
             settingsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             richPresencePanel.SuspendLayout();
             botPanel.SuspendLayout();
             dllPanel.SuspendLayout();
@@ -274,7 +282,7 @@ namespace DiscordMultiTool
             label1.Name = "label1";
             label1.Size = new Size(159, 60);
             label1.TabIndex = 9;
-            label1.Text = "DiscordMultiTool V2.5.1\r\nMasterSharp Team LLC.";
+            label1.Text = "DiscordMultiTool V2.5.3\r\nMasterSharp Team LLC.";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // contentPanel
@@ -294,6 +302,13 @@ namespace DiscordMultiTool
             // settingsPanel
             // 
             settingsPanel.BackColor = Color.FromArgb(47, 49, 54);
+            settingsPanel.Controls.Add(label7);
+            settingsPanel.Controls.Add(label6);
+            settingsPanel.Controls.Add(label8);
+            settingsPanel.Controls.Add(label9);
+            settingsPanel.Controls.Add(label10);
+            settingsPanel.Controls.Add(label11);
+            settingsPanel.Controls.Add(pictureBox2);
             settingsPanel.Controls.Add(label2);
             settingsPanel.Controls.Add(languageComboBox);
             settingsPanel.Controls.Add(lblLanguage);
@@ -310,6 +325,82 @@ namespace DiscordMultiTool
             settingsPanel.Name = "settingsPanel";
             settingsPanel.Size = new Size(920, 720);
             settingsPanel.TabIndex = 0;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Silver;
+            label7.Location = new Point(842, 496);
+            label7.Name = "label7";
+            label7.Size = new Size(66, 30);
+            label7.TabIndex = 19;
+            label7.Text = "Client";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.Silver;
+            label6.Location = new Point(815, 522);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 30);
+            label6.TabIndex = 18;
+            label6.Text = "OpenSSL";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.Silver;
+            label8.Location = new Point(774, 643);
+            label8.Name = "label8";
+            label8.Size = new Size(134, 30);
+            label8.TabIndex = 17;
+            label8.Text = "Telegram Bot";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Silver;
+            label9.Location = new Point(815, 552);
+            label9.Name = "label9";
+            label9.Size = new Size(93, 30);
+            label9.TabIndex = 16;
+            label9.Text = "Injection";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.ForeColor = Color.Silver;
+            label10.Location = new Point(788, 582);
+            label10.Name = "label10";
+            label10.Size = new Size(120, 30);
+            label10.TabIndex = 15;
+            label10.Text = "Discord Bot";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.Silver;
+            label11.Location = new Point(787, 613);
+            label11.Name = "label11";
+            label11.Size = new Size(121, 30);
+            label11.TabIndex = 14;
+            label11.Text = "DiscordRPC";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
+            pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox2.Location = new Point(688, 681);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(32, 32);
+            pictureBox2.TabIndex = 13;
+            pictureBox2.TabStop = false;
             // 
             // label2
             // 
@@ -698,6 +789,7 @@ namespace DiscordMultiTool
             contentPanel.ResumeLayout(false);
             settingsPanel.ResumeLayout(false);
             settingsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             richPresencePanel.ResumeLayout(false);
             richPresencePanel.PerformLayout();
             botPanel.ResumeLayout(false);
@@ -761,5 +853,12 @@ namespace DiscordMultiTool
         public Button button11;
         private PictureBox pictureBox1;
         private Label label2;
+        private Label label7;
+        private Label label6;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private PictureBox pictureBox2;
     }
 }

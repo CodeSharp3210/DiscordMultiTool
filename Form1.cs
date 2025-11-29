@@ -60,6 +60,12 @@ namespace DiscordMultiTool
                 label3.ForeColor = colorDialog.Color;
                 label4.ForeColor = colorDialog.Color;
                 label5.ForeColor = colorDialog.Color;
+                label6.ForeColor = colorDialog.Color;
+                label7.ForeColor = colorDialog.Color;
+                label8.ForeColor = colorDialog.Color;
+                label9.ForeColor = colorDialog.Color;
+                label10.ForeColor = colorDialog.Color;
+                label11.ForeColor = colorDialog.Color;
                 lblLanguage.ForeColor = colorDialog.Color;
                 checkBox1.ForeColor = colorDialog.Color;
                 button10.ForeColor = colorDialog.Color;
@@ -303,7 +309,6 @@ namespace DiscordMultiTool
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             var outlineColor = Color.Silver;
             int radiusSmall = 10;
             int radiusLarge = 15;
@@ -394,6 +399,12 @@ namespace DiscordMultiTool
             label3.ForeColor = textColor;
             label4.ForeColor = textColor;
             label5.ForeColor = textColor;
+            label6.ForeColor = textColor;
+            label7.ForeColor = textColor;
+            label8.ForeColor = textColor;
+            label9.ForeColor = textColor;
+            label10.ForeColor = textColor;
+            label11.ForeColor = textColor;
             lblLanguage.ForeColor = textColor;
             checkBox1.ForeColor = textColor;
             // button9 removed
@@ -434,6 +445,12 @@ namespace DiscordMultiTool
             label3.ForeColor = textColor;
             label4.ForeColor = textColor;
             label5.ForeColor = textColor;
+            label8.ForeColor = textColor;
+            label10.ForeColor = textColor;
+            label11.ForeColor = textColor;
+            label9.ForeColor = textColor;
+            label6.ForeColor = textColor;
+            label7.ForeColor = textColor;
             lblLanguage.ForeColor = textColor;
             checkBox1.ForeColor = textColor;
             button10.ForeColor = textColor;
