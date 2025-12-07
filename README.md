@@ -1,7 +1,7 @@
 
 # DiscordMultiTool - MasterSharp Team LLC.
 
-DiscordMultiTool è un software avanzato creato da **MasterSharp Team LLC** e **Franciplay58** per lavorare, sperimentare e gestire funzionalità avanzate di Discord, con supporto futuro per Telegram.
+DiscordMultiTool è un software avanzato creato da **CodeSharp** e **Franciplay58** per lavorare, sperimentare e gestire funzionalità avanzate di Discord, con supporto futuro per Telegram.
 
 ## 🔧 Cosa Fa Questa Applicazione?
 
@@ -46,5 +46,6 @@ Grazie del supporto per questo programma! Se desiderate una nuova versione o ave
 ---
 
 📌 **Repository:** [https://github.com/CodeSharp3210](https://github.com/CodeSharp3210)
+
 
 
