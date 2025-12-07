@@ -282,7 +282,7 @@ namespace DiscordMultiTool
             label1.Name = "label1";
             label1.Size = new Size(159, 60);
             label1.TabIndex = 9;
-            label1.Text = "DiscordMultiTool V2.5.3\r\nMasterSharp Team LLC.";
+            label1.Text = "DiscordMultiTool V2.5.6\r\nMasterSharp Team LLC.";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // contentPanel
@@ -455,9 +455,9 @@ namespace DiscordMultiTool
             label5.ForeColor = Color.White;
             label5.Location = new Point(420, 250);
             label5.Name = "label5";
-            label5.Size = new Size(103, 21);
+            label5.Size = new Size(94, 21);
             label5.TabIndex = 7;
-            label5.Text = "Save Settings";
+            label5.Text = "Overlay GUI";
             // 
             // textBox2
             // 

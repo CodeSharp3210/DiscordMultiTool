@@ -1,9 +1,10 @@
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace DiscordMultiTool
 {
@@ -39,7 +40,7 @@ namespace DiscordMultiTool
                     Console.WriteLine("No Discord or Telegram session found.");
                     Console.WriteLine("Press ENTER to retry...");
 
-                    WriteEvent("No Discord or Telegram processes found — operation failed.",
+                    WriteEvent("No Discord or Telegram processes found â€” operation failed.",
                                EventLogEntryType.Warning);
 
                     Console.ReadLine();
@@ -58,6 +59,8 @@ namespace DiscordMultiTool
 
                     foreach (Process t in telegramClients)
                         Console.WriteLine($"Telegram  | Name: {t.ProcessName} | PID: {t.Id}");
+                    Console.WriteLine("Press ENTER to continue...");
+                    break;
                 }
                 else if (discordOpen)
                 {
@@ -66,6 +69,8 @@ namespace DiscordMultiTool
                     Console.WriteLine("Discord process found:");
                     foreach (Process d in discordClients)
                         Console.WriteLine($"Name: {d.ProcessName} | PID: {d.Id}");
+                    Console.WriteLine("Press ENTER to continue...");
+                    break;
                 }
                 else if (telegramOpen)
                 {
@@ -74,25 +79,40 @@ namespace DiscordMultiTool
                     Console.WriteLine("Telegram process found:");
                     foreach (Process t in telegramClients)
                         Console.WriteLine($"Name: {t.ProcessName} | PID: {t.Id}");
-
-                    string folder = @"C:\Users\" + Environment.UserName + @"\.dmt";
-                    string fileContent = $"DiscordMultiTool injected. " + DateTime.Now;
-
-                    if (Directory.Exists(folder))
-                    {
-                        if (!File.Exists(folder + @"\log.txt"))
-                            File.WriteAllText(folder + @"\log.txt", fileContent);
-                    }
-                    else
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
+                    Console.WriteLine("Press ENTER to continue...");
+                    break;
                 }
+           
+            }
+                // --- DOWNLOAD GUI IMAGE ---
+                string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".dmt");
+                if (!Directory.Exists(folder))
+                    Directory.CreateDirectory(folder);
 
-                // --- UI START EVENT ---
+                string filePath = Path.Combine(folder, "GUI.png");
+
+                //URL IMMAGINE
+                string url = "https://github.com/CodeSharp3210/DiscordMultiTool/releases/download/DMT-2.5.6/GUI.png"; 
+                string url2 = "https://github.com/CodeSharp3210/DiscordMultiTool/releases/download/DMT-2.5.6/Overlay.py";
+
+                try
+                {
+                    using HttpClient client = new HttpClient();
+                    byte[] data = await client.GetByteArrayAsync(url);
+                    await File.WriteAllBytesAsync(filePath, data);
+                    using HttpClient client2 = new HttpClient();
+                    byte[] data2 = await client2.GetByteArrayAsync(url2);
+                    string overlayPath = Path.Combine(folder, "Overlay.py");
+                    await File.WriteAllBytesAsync(overlayPath, data2);
+                }
+                catch { }
+
+                string logFile = Path.Combine(folder, "log.txt");
+                if (!File.Exists(logFile))
+                    File.WriteAllText(logFile, $"DiscordMultiTool injected. {DateTime.Now}");
+
                 WriteEvent("User started the UI stage.", EventLogEntryType.Information);
 
-                Console.WriteLine("\nPress ENTER to run program...");
                 Console.ReadLine();
 
                 FreeConsole();
@@ -100,28 +120,17 @@ namespace DiscordMultiTool
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());
-
-                return;
-            }
+            return;
         }
-
-        // ============================================================
-        //  EVENT VIEWER: INITIALIZATION + WRITE EVENT
-        // ============================================================
-
+    
         private static void InitEventLog()
         {
             try
             {
                 if (!EventLog.SourceExists(sourceName))
-                {
                     EventLog.CreateEventSource(sourceName, logName);
-                }
             }
-            catch (Exception ex)
-            {
-                
-            }
+            catch { }
         }
 
         private static void WriteEvent(string message, EventLogEntryType type)
@@ -134,10 +143,7 @@ namespace DiscordMultiTool
                     eventLog.WriteEntry(message, type);
                 }
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch { }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace DiscordMultiTool
         private int highlightTargetY = 496;
         private bool isModernTheme = false;
         private bool _telegramDiagnosticsShown = false;
+        private bool closing = false;
 
         private static DiscordRPC.DiscordRpcClient rpcClient;
         private CancellationTokenSource _cts;
@@ -212,7 +213,7 @@ namespace DiscordMultiTool
                     ["button11"] = "Color GUI",
                     ["label3"] = "Discord Account",
                     ["label4"] = "Target Server",
-                    ["label5"] = "Save Settings",
+                    ["label5"] = "GUI Overlay",
                     ["lblLanguage"] = "Language",
                     ["rpcButton1"] = "Load Discord RPC",
                     ["rpcLabel1"] = "Application ID",
@@ -249,7 +250,7 @@ namespace DiscordMultiTool
                     ["button11"] = "Colore GUI",
                     ["label3"] = "Account Discord",
                     ["label4"] = "Server Target",
-                    ["label5"] = "Salva Impostazioni",
+                    ["label5"] = "Overlay GUI",
                     ["lblLanguage"] = "Lingua",
                     ["rpcButton1"] = "Carica Discord RPC",
                     ["rpcLabel1"] = "ID Applicazione",
@@ -328,7 +329,6 @@ namespace DiscordMultiTool
             ConfigureButtonOutline(botButton1, outlineColor, radiusSmall);
             ConfigureButtonOutline(dllButton1, outlineColor, radiusSmall);
 
-            checkBox1.Checked = (Properties.Settings.Default.checkbox == "True");
 
             if (checkBox1.Checked)
             {
@@ -352,27 +352,7 @@ namespace DiscordMultiTool
             UpdateLanguage();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.checkbox = checkBox1.Checked ? "True" : "False";
-            Properties.Settings.Default.textbox1 = textBox1.Text;
-            Properties.Settings.Default.textbox2 = textBox2.Text;
-
-            
-
-            try
-            {
-                _cts?.Cancel();
-                if (rpcClient != null)
-                {
-                    if (rpcClient.IsInitialized)
-                        rpcClient.Deinitialize();
-                    rpcClient.Dispose();
-                    rpcClient = null;
-                }
-            }
-            catch { }
-        }
+        
 
         private void ApplyModernTheme()
         {
@@ -394,17 +374,6 @@ namespace DiscordMultiTool
             button5.ForeColor = textColor;
             button8.ForeColor = textColor;
             btnSettings.ForeColor = textColor;
-            label1.ForeColor = Color.Gray;
-            label2.ForeColor = Color.Silver;
-            label3.ForeColor = textColor;
-            label4.ForeColor = textColor;
-            label5.ForeColor = textColor;
-            label6.ForeColor = textColor;
-            label7.ForeColor = textColor;
-            label8.ForeColor = textColor;
-            label9.ForeColor = textColor;
-            label10.ForeColor = textColor;
-            label11.ForeColor = textColor;
             lblLanguage.ForeColor = textColor;
             checkBox1.ForeColor = textColor;
             // button9 removed
@@ -440,17 +409,6 @@ namespace DiscordMultiTool
             button5.ForeColor = textColor;
             button8.ForeColor = textColor;
             btnSettings.ForeColor = textColor;
-            label1.ForeColor = Color.FromArgb(142, 146, 151);
-            label2.ForeColor = Color.FromArgb(142, 146, 151);
-            label3.ForeColor = textColor;
-            label4.ForeColor = textColor;
-            label5.ForeColor = textColor;
-            label8.ForeColor = textColor;
-            label10.ForeColor = textColor;
-            label11.ForeColor = textColor;
-            label9.ForeColor = textColor;
-            label6.ForeColor = textColor;
-            label7.ForeColor = textColor;
             lblLanguage.ForeColor = textColor;
             checkBox1.ForeColor = textColor;
             button10.ForeColor = textColor;
@@ -675,13 +633,70 @@ namespace DiscordMultiTool
             Properties.Settings.Default.Save();
         }
 
+        
+
+        private void AvviaScript()
+        {
+            string percorso = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                ".dmt",
+                "Overlay.py"
+            );
+
+            if (File.Exists(percorso))
+            {
+                var psi = new ProcessStartInfo(percorso)
+                {
+                    UseShellExecute = true
+                };
+
+                Process script = Process.Start(psi);
+
+                // Thread che monitora lo script
+                Thread monitor = new Thread(() => MonitorScript(script))
+                {
+                    IsBackground = true
+                };
+                monitor.Start();
+            }
+            else
+            {
+                MessageBox.Show("File doesn't found.");
+            }
+        }
+
+        // Metodo separato, fuori da AvviaScript
+        private void MonitorScript(Process script)
+        {
+            while (!closing)
+            {
+                Thread.Sleep(300); // controlla ogni 300 ms
+            }
+
+            try
+            {
+                if (!script.HasExited)
+                    script.Kill();
+            }
+            catch { }
+        }
+
+
+
+        // Checkbox per avviare/fermare lo script
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.checkbox = checkBox1.Checked ? "True" : "False";
-            Properties.Settings.Default.textbox1 = textBox1.Text;
-            Properties.Settings.Default.textbox2 = textBox2.Text;
-            Properties.Settings.Default.Save();
+            if (checkBox1.Checked)
+            {
+                AvviaScript();
+            }
+            else
+            {
+                closing = true; // opzionale: ferma lo script se spunti la checkbox
+            }
         }
+
+
 
         private void LanguageComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -933,5 +948,21 @@ namespace DiscordMultiTool
             t.Join();
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            closing = true;
+            try
+            {
+                _cts?.Cancel();
+                if (rpcClient != null)
+                {
+                    if (rpcClient.IsInitialized)
+                        rpcClient.Deinitialize();
+                    rpcClient.Dispose();
+                    rpcClient = null;
+                }
+            }
+            catch { }
+        }
     }
 }
